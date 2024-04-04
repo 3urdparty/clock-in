@@ -1,0 +1,700 @@
+
+▲ [WARNING] Duplicate key "vite" in object literal [duplicate-object-key]
+
+    package.json:43:8:
+      43 │         "vite": "^5.0"
+         ╵         ~~~~~~
+
+  The original key "vite" is here:
+
+    package.json:35:4:
+      35 │     "vite": "^5.1.5",
+         ╵     ~~~~~~
+
+▲ [WARNING] Duplicate key "private" in object literal [duplicate-object-key]
+
+    package.json:56:4:
+      56 │     
+founhS
+found 0 vulnerabilities
+�Pat❯ n~
+
+found o�Pat❯ npm run dev
+
+is
+> eleFs
+> electron.js> elec:
+> vite
+
+▲ [W"p
+▲ e":▲ res
+    package.js~~    pa
+
+      43 │         te         ╵   (
+      43 │     li      43 │   ]
+
+  Thes 
+  The originpm ERR! JSON.connpm ERR!ar":"mo  The          ╵     ~~~~~~
+
+  The original key "type" is here:
+
+    package.json:21:2:
+      21 │   "type": "module",
+                                         prnpm ERR!as .e" in object literal [duplicate-object-key]
+
+    package.json:43:8:
+      43 │         "vite": "^5.0"
+         ╵         ~~~~~~
+
+  The origi  Theey "vite" is here:
+
+    package.json:35:4:
+      35 │     "vite": "^5.1.5",
+         ╵     ~~~~~~
+
+▲ [WARNING] Duplicate key "private" in object literal [duplicate-object-key]
+
+    package.json:56:4:
+      56 │     "private": true,
+         ╵     ~~~~~~~~~
+
+  The original key "private" is here:
+
+    package.json:8:2:
+      8 │   "private": true,
+        ╵   ~~~~~~~~~
+
+▲ [WARNING] Duplicate key "type" in object literal [duplicate-object-key]
+
+    package.json:57:4:
+      57 │     "type": "module"
+         ╵     ~~~~~~
+
+  The original key "type" is here:
+
+    package.json:21:2:
+      21 │   "type": "module",
+         ╵   ~~~~~~
+
+vite v5.2.8 building for development...
+
+watching for file changes...
+vite v5.2.8 building for development...
+
+watching for file changes...
+
+  VITE v5.2.8  ready in 351 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+
+build started...
+
+build started... (x2)
+✓ 0 modules transformed.
+Could not resolve entry module "electron/preload/index.ts".
+✓ 0 modules transformed.
+Could not resolve entry module "electron/main/index.ts".
+^C
+❯ npm run dev
+
+> electron-vue-vite@28.0.0 dev
+> vite
+
+▲ [WARNING] Duplicate key "vite" in object literal [duplicate-object-key]
+
+    package.json:43:8:
+      43 │         "vite": "^5.0"
+         ╵         ~~~~~~
+
+  The original key "vite" is here:
+
+    package.json:35:4:
+      35 │     "vite": "^5.1.5",
+         ╵     ~~~~~~
+
+▲ [WARNING] Duplicate key "private" in object literal [duplicate-object-key]
+
+    package.json:56:4:
+      56 │     "private": true,
+         ╵     ~~~~~~~~~
+
+  The original key "private" is here:
+
+    package.json:8:2:
+      8 │   "private": true,
+        ╵   ~~~~~~~~~
+
+▲ [WARNING] Duplicate key "type" in object literal [duplicate-object-key]
+
+    package.json:57:4:
+      57 │     "type": "module"
+         ╵     ~~~~~~
+
+  The original key "type" is here:
+
+    package.json:21:2:
+      21 │   "type": "module",
+         ╵   ~~~~~~
+
+▲ [WARNING] Duplicate key "vite" in object literal [duplicate-object-key]
+
+    package.json:43:8:
+      43 │         "vite": "^5.0"
+         ╵         ~~~~~~
+
+  The original key "vite" is here:
+
+    package.json:35:4:
+      35 │     "vite": "^5.1.5",
+         ╵     ~~~~~~
+
+▲ [WARNING] Duplicate key "private" in object literal [duplicate-object-key]
+
+    package.json:56:4:
+      56 │     "private": true,
+         ╵     ~~~~~~~~~
+
+  The original key "private" is here:
+
+    package.json:8:2:
+      8 │   "private": true,
+        ╵   ~~~~~~~~~
+
+▲ [WARNING] Duplicate key "type" in object literal [duplicate-object-key]
+
+    package.json:57:4:
+      57 │     "type": "module"
+         ╵     ~~~~~~
+
+  The original key "type" is here:
+
+    package.json:21:2:
+      21 │   "type": "module",
+         ╵   ~~~~~~
+
+vite v5.2.8 building for development...
+
+watching for file changes...
+vite v5.2.8 building for development...
+
+watching for file changes...
+
+  VITE v5.2.8  ready in 214 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+
+build started...
+
+build started... (x2)
+✓ 0 modules transformed.
+Could not resolve entry module "electron/main/index.ts".
+✓ 0 modules transformed.
+Could not resolve entry module "electron/preload/index.ts".
+^C
+❯ 
+❯ npm run dev
+
+> electron-vue-vite@28.0.0 dev
+> vite
+
+▲ [WARNING] Duplicate key "vite" in object literal [duplicate-object-key]
+
+    package.json:43:8:
+      43 │         "vite": "^5.0"
+         ╵         ~~~~~~
+
+  The original key "vite" is here:
+
+    package.json:35:4:
+      35 │     "vite": "^5.1.5",
+         ╵     ~~~~~~
+
+▲ [WARNING] Duplicate key "private" in object literal [duplicate-object-key]
+
+    package.json:56:4:
+      56 │     "private": true,
+         ╵     ~~~~~~~~~
+
+  The original key "private" is here:
+
+    package.json:8:2:
+      8 │   "private": true,
+        ╵   ~~~~~~~~~
+
+▲ [WARNING] Duplicate key "type" in object literal [duplicate-object-key]
+
+    package.json:57:4:
+      57 │     "type": "module"
+         ╵     ~~~~~~
+
+  The original key "type" is here:
+
+    package.json:21:2:
+      21 │   "type": "module",
+         ╵   ~~~~~~
+
+▲ [WARNING] Duplicate key "vite" in object literal [duplicate-object-key]
+
+    package.json:43:8:
+      43 │         "vite": "^5.0"
+         ╵         ~~~~~~
+
+  The original key "vite" is here:
+
+    package.json:35:4:
+      35 │     "vite": "^5.1.5",
+         ╵     ~~~~~~
+
+▲ [WARNING] Duplicate key "private" in object literal [duplicate-object-key]
+
+    package.json:56:4:
+      56 │     "private": true,
+         ╵     ~~~~~~~~~
+
+  The original key "private" is here:
+
+    package.json:8:2:
+      8 │   "private": true,
+        ╵   ~~~~~~~~~
+
+▲ [WARNING] Duplicate key "type" in object literal [duplicate-object-key]
+
+    package.json:57:4:
+      57 │     "type": "module"
+         ╵     ~~~~~~
+
+  The original key "type" is here:
+
+    package.json:21:2:
+      21 │   "type": "module",
+         ╵   ~~~~~~
+
+vite v5.2.8 building for development...
+
+watching for file changes...
+vite v5.2.8 building for development...
+
+watching for file changes...
+
+  VITE v5.2.8  ready in 214 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+
+build started...
+
+build started... (x2)
+✓ 1 modules transformed.
+✓ 1 modules transformed. (x2)
+dist-electron/preload/index.mjs  10.02 kB │ gzip: 4.17 kB │ map: 5.35 kB
+built in 63ms.
+desktop/dist-electron/main/index.js  2.71 kB │ gzip: 1.16 kB │ map: 5.44 kB
+built in 65ms.
+❯ 
+❯ npm run dev
+
+> electron-vue-vite@28.0.0 dev
+> vite
+
+▲ [WARNING] Duplicate key "vite" in object literal [duplicate-object-key]
+
+    package.json:43:8:
+      43 │         "vite": "^5.0"
+         ╵         ~~~~~~
+
+  The original key "vite" is here:
+
+    package.json:35:4:
+      35 │     "vite": "^5.1.5",
+         ╵     ~~~~~~
+
+▲ [WARNING] Duplicate key "private" in object literal [duplicate-object-key]
+
+    package.json:56:4:
+      56 │     "private": true,
+         ╵     ~~~~~~~~~
+
+  The original key "private" is here:
+
+    package.json:8:2:
+      8 │   "private": true,
+        ╵   ~~~~~~~~~
+
+▲ [WARNING] Duplicate key "type" in object literal [duplicate-object-key]
+
+    package.json:57:4:
+      57 │     "type": "module"
+         ╵     ~~~~~~
+
+  The original key "type" is here:
+
+    package.json:21:2:
+      21 │   "type": "module",
+         ╵   ~~~~~~
+
+▲ [WARNING] Duplicate key "vite" in object literal [duplicate-object-key]
+
+    package.json:43:8:
+      43 │         "vite": "^5.0"
+         ╵         ~~~~~~
+
+  The original key "vite" is here:
+
+    package.json:35:4:
+      35 │     "vite": "^5.1.5",
+         ╵     ~~~~~~
+
+▲ [WARNING] Duplicate key "private" in object literal [duplicate-object-key]
+
+    package.json:56:4:
+      56 │     "private": true,
+         ╵     ~~~~~~~~~
+
+  The original key "private" is here:
+
+    package.json:8:2:
+      8 │   "private": true,
+        ╵   ~~~~~~~~~
+
+▲ [WARNING] Duplicate key "type" in object literal [duplicate-object-key]
+
+    package.json:57:4:
+      57 │     "type": "module"
+         ╵     ~~~~~~
+
+  The original key "type" is here:
+
+    package.json:21:2:
+      21 │   "type": "module",
+         ╵   ~~~~~~
+
+vite v5.2.8 building for development...
+
+watching for file changes...
+vite v5.2.8 building for development...
+
+watching for file changes...
+
+  VITE v5.2.8  ready in 214 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+
+build started...
+
+build started... (x2)
+✓ 1 modules transformed.
+✓ 1 modules transformed. (x2)
+dist-electron/preload/index.mjs  10.02 kB │ gzip: 4.17 kB │ map: 5.35 kB
+built in 60ms.
+desktop/dist-electron/main/index.js  2.71 kB │ gzip: 1.16 kB │ map: 5.44 kB
+built in 61ms.
+❯ npm run dev
+
+> electron-vue-vite@28.0.0 dev
+> vite
+
+▲ [WARNING] Duplicate key "vite" in object literal [duplicate-object-key]
+
+    package.json:43:8:
+      43 │         "vite": "^5.0"
+         ╵         ~~~~~~
+
+  The original key "vite" is here:
+
+    package.json:35:4:
+      35 │     "vite": "^5.1.5",
+         ╵     ~~~~~~
+
+▲ [WARNING] Duplicate key "private" in object literal [duplicate-object-key]
+
+    package.json:56:4:
+      56 │     "private": true,
+         ╵     ~~~~~~~~~
+
+  The original key "private" is here:
+
+    package.json:8:2:
+      8 │   "private": true,
+        ╵   ~~~~~~~~~
+
+▲ [WARNING] Duplicate key "type" in object literal [duplicate-object-key]
+
+    package.json:57:4:
+      57 │     "type": "module"
+         ╵     ~~~~~~
+
+  The original key "type" is here:
+
+    package.json:21:2:
+      21 │   "type": "module",
+         ╵   ~~~~~~
+
+▲ [WARNING] Duplicate key "vite" in object literal [duplicate-object-key]
+
+    package.json:43:8:
+      43 │         "vite": "^5.0"
+         ╵         ~~~~~~
+
+  The original key "vite" is here:
+
+    package.json:35:4:
+      35 │     "vite": "^5.1.5",
+         ╵     ~~~~~~
+
+▲ [WARNING] Duplicate key "private" in object literal [duplicate-object-key]
+
+    package.json:56:4:
+      56 │     "private": true,
+         ╵     ~~~~~~~~~
+
+  The original key "private" is here:
+
+    package.json:8:2:
+      8 │   "private": true,
+        ╵   ~~~~~~~~~
+
+▲ [WARNING] Duplicate key "type" in object literal [duplicate-object-key]
+
+    package.json:57:4:
+      57 │     "type": "module"
+         ╵     ~~~~~~
+
+  The original key "type" is here:
+
+    package.json:21:2:
+      21 │   "type": "module",
+         ╵   ~~~~~~
+
+vite v5.2.8 building for development...
+
+watching for file changes...
+vite v5.2.8 building for development...
+
+watching for file changes...
+
+  VITE v5.2.8  ready in 212 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+
+build started...
+
+build started... (x2)
+✓ 1 modules transformed.
+✓ 1 modules transformed. (x2)
+dist-electron/preload/index.mjs  10.02 kB │ gzip: 4.17 kB │ map: 5.35 kB
+built in 59ms.
+dist-electron/main/index.js  2.71 kB │ gzip: 1.16 kB │ map: 5.45 kB
+built in 60ms.
+[3895:0405/070346.777278:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: 
+devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[3895:0405/070351.600476:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: 
+devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+^C
+
+❯ npm run dev
+
+> electron-vue-vite@28.0.0 dev
+> vite
+
+▲ [WARNING] Duplicate key "vite" in object literal [duplicate-object-key]
+
+    package.json:43:8:
+      43 │         "vite": "^5.0"
+         ╵         ~~~~~~
+
+  The original key "vite" is here:
+
+    package.json:35:4:
+      35 │     "vite": "^5.1.5",
+         ╵     ~~~~~~
+
+▲ [WARNING] Duplicate key "private" in object literal [duplicate-object-key]
+
+    package.json:56:4:
+      56 │     "private": true,
+         ╵     ~~~~~~~~~
+
+  The original key "private" is here:
+
+    package.json:8:2:
+      8 │   "private": true,
+        ╵   ~~~~~~~~~
+
+▲ [WARNING] Duplicate key "type" in object literal [duplicate-object-key]
+
+    package.json:57:4:
+      57 │     "type": "module"
+         ╵     ~~~~~~
+
+  The original key "type" is here:
+
+    package.json:21:2:
+      21 │   "type": "module",
+         ╵   ~~~~~~
+
+▲ [WARNING] Duplicate key "vite" in object literal [duplicate-object-key]
+
+    package.json:43:8:
+      43 │         "vite": "^5.0"
+         ╵         ~~~~~~
+
+  The original key "vite" is here:
+
+    package.json:35:4:
+      35 │     "vite": "^5.1.5",
+         ╵     ~~~~~~
+
+▲ [WARNING] Duplicate key "private" in object literal [duplicate-object-key]
+
+    package.json:56:4:
+      56 │     "private": true,
+         ╵     ~~~~~~~~~
+
+  The original key "private" is here:
+
+    package.json:8:2:
+      8 │   "private": true,
+        ╵   ~~~~~~~~~
+
+▲ [WARNING] Duplicate key "type" in object literal [duplicate-object-key]
+
+    package.json:57:4:
+      57 │     "type": "module"
+         ╵     ~~~~~~
+
+  The original key "type" is here:
+
+    package.json:21:2:
+      21 │   "type": "module",
+         ╵   ~~~~~~
+
+vite v5.2.8 building for development...
+
+watching for file changes...
+vite v5.2.8 building for development...
+
+watching for file changes...
+
+  VITE v5.2.8  ready in 214 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+
+build started...
+
+build started... (x2)
+✓ 1 modules transformed.
+✓ 1 modules transformed. (x2)
+dist-electron/preload/index.mjs  10.02 kB │ gzip: 4.17 kB │ map: 5.35 kB
+built in 59ms.
+dist-electron/main/index.js  2.71 kB │ gzip: 1.16 kB │ map: 5.45 kB
+built in 60ms.
+[3940:0405/070555.102353:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: 
+devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+^C
+
+❯ npm run dev
+
+> electron-vue-vite@28.0.0 dev
+> vite
+
+▲ [WARNING] Duplicate key "vite" in object literal [duplicate-object-key]
+
+    package.json:43:8:
+      43 │         "vite": "^5.0"
+         ╵         ~~~~~~
+
+  The original key "vite" is here:
+
+    package.json:35:4:
+      35 │     "vite": "^5.1.5",
+         ╵     ~~~~~~
+
+▲ [WARNING] Duplicate key "private" in object literal [duplicate-object-key]
+
+    package.json:56:4:
+      56 │     "private": true,
+         ╵     ~~~~~~~~~
+
+  The original key "private" is here:
+
+    package.json:8:2:
+      8 │   "private": true,
+        ╵   ~~~~~~~~~
+
+▲ [WARNING] Duplicate key "type" in object literal [duplicate-object-key]
+
+    package.json:57:4:
+      57 │     "type": "module"
+         ╵     ~~~~~~
+
+  The original key "type" is here:
+
+    package.json:21:2:
+      21 │   "type": "module",
+         ╵   ~~~~~~
+
+▲ [WARNING] Duplicate key "vite" in object literal [duplicate-object-key]
+
+    package.json:43:8:
+      43 │         "vite": "^5.0"
+         ╵         ~~~~~~
+
+  The original key "vite" is here:
+
+    package.json:35:4:
+      35 │     "vite": "^5.1.5",
+         ╵     ~~~~~~
+
+▲ [WARNING] Duplicate key "private" in object literal [duplicate-object-key]
+
+    package.json:56:4:
+      56 │     "private": true,
+         ╵     ~~~~~~~~~
+
+  The original key "private" is here:
+
+    package.json:8:2:
+      8 │   "private": true,
+        ╵   ~~~~~~~~~
+
+▲ [WARNING] Duplicate key "type" in object literal [duplicate-object-key]
+
+    package.json:57:4:
+      57 │     "type": "module"
+         ╵     ~~~~~~
+
+  The original key "type" is here:
+
+    package.json:21:2:
+      21 │   "type": "module",
+         ╵   ~~~~~~
+
+vite v5.2.8 building for development...
+
+watching for file changes...
+vite v5.2.8 building for development...
+
+watching for file changes...
+
+  VITE v5.2.8  ready in 320 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+
+build started...
+
+build started... (x2)
+✓ 1 modules transformed.
+✓ 1 modules transformed. (x2)

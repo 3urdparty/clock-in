@@ -1,0 +1,41 @@
+--{%
+local URL = "http://192.168.253.251:8000/"
+--%}
+
+POST http://192.168.253.251:8000/api/scan
+Content-Type: application/json
+
+{
+    "fingerprint_id": 1
+}
+
+GET http://192.168.253.251:8000/api/sync
+
+POST http://172.20.10.2:8000/api/fingerprints/enroll
+Content-Type: application/json
+
+{
+    "device_id": 1,
+    "employee_id": 1
+}
+
+POST http://192.168.253.251:8000/api/fingerprints/delete
+Content-Type: application/json
+
+{
+    "fingerprint_id":1
+}
+
+DELETE http://192.168.253.251:8000/api/fingerprints/1
+Content-Type: application/json
+
+
+POST http://192.168.253.251:8000/api/fingerprints
+Content-Type: application/json
+
+{
+    "fingerprint_id":1
+}
+
+DELETE http://192.168.253.251:8000/api/fingerprints/1
+Content-Type: application/json
