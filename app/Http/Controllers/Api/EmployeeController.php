@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\User;
+use App\Http\Requests\StoreEmployeeRequest;
 
 class EmployeeController extends Controller
 {
@@ -21,18 +22,10 @@ class EmployeeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreEmployeeRequest $request)
     {
-        $values = $request->validate([
-            "name" => "required|string",
-            "email" => "required|email|unique:users,email" . auth()->id(),
-            "password" => "required|string",
-            "phone_number" => "required|string",
-            "username" => "required|string",
-            "image_url" => "nullable|string",
-            "role" => "required|string",
-            "description" => "nullable|string",
-        ]);
+        $values = $request->validated();
+
         $user = User::create($values);
         $employee = Employee::make($values);
         $employee->user()->associate($user);

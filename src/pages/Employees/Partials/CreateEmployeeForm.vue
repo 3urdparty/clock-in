@@ -66,7 +66,9 @@
                                                     >
                                                     <input
                                                         type="text"
-                                                        v-model="form.username"
+                                                        v-model="
+                                                            form.values.username
+                                                        "
                                                         name="company-website"
                                                         id="company-website"
                                                         class="block w-full min-w-0 flex-1 rounded-none rounded-r-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
@@ -86,7 +88,9 @@
                                                         type="text"
                                                         name="role"
                                                         id="role"
-                                                        v-model="form.role"
+                                                        v-model="
+                                                            form.values.role
+                                                        "
                                                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                                                         placeholder="Role"
                                                     />
@@ -123,7 +127,8 @@
                                                     <textarea
                                                         id="about"
                                                         v-model="
-                                                            form.description
+                                                            form.values
+                                                                .description
                                                         "
                                                         name="about"
                                                         rows="3"
@@ -167,7 +172,9 @@
                                                 <div class="mt-2">
                                                     <input
                                                         type="text"
-                                                        v-model="form.name"
+                                                        v-model="
+                                                            form.values.name
+                                                        "
                                                         name="first-name"
                                                         id="first-name"
                                                         autocomplete="given-name"
@@ -223,7 +230,8 @@
                                                         name="phone-number"
                                                         id="phone-number"
                                                         v-model="
-                                                            form.phone_number
+                                                            form.values
+                                                                .phone_number
                                                         "
                                                         class="block w-full rounded-md border-0 py-1.5 pl-16 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                                                         placeholder="+1 (555) 987-6543"
@@ -239,46 +247,58 @@
                                                 <div class="mt-2">
                                                     <input
                                                         id="email"
-                                                        v-model="form.email"
+                                                        v-model="
+                                                            form.values.email
+                                                        "
                                                         name="email"
                                                         type="email"
                                                         autocomplete="email"
-                                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 transition"
+                                                        :class="{
+                                                            'ring-red-500 focus:ring-red-500':
+                                                                form.errors
+                                                                    ?.email,
+                                                        }"
                                                     />
                                                 </div>
+                                                <span
+                                                    class="text-red-500 text-sm"
+                                                    v-for="error in form.errors
+                                                        ?.email"
+                                                >
+                                                    {{ error }}
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                {{ isCanceled ? "Canceled" : "Not cancelled" }}
-                                <br />
-                                {{ isLoading ? "Loading" : "Not loading" }}
-
-                                <br />
-                                {{ isFinished ? "Finished" : "Not finished" }}
-
-                                <br />
-                                {{ error ? "Error" : "No error" }}
-
-                                <br />
-                                {{ response }}
-                                <br />
                                 <div
                                     class="mt-6 flex items-center justify-end gap-x-6"
                                 >
                                     <button
                                         type="button"
                                         class="text-sm font-semibold leading-6 text-gray-900"
-                                        @click="open = false"
+                                        @click="
+                                            open = false;
+                                            emits('reset');
+                                        "
                                     >
                                         Cancel
                                     </button>
                                     <button
-                                        @click="handleSubmit"
-                                        type="submit"
-                                        class="rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                                        @click="emits('submit')"
+                                        type="button"
+                                        class="rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 flex gap-1"
+                                        :class="{
+                                            'opacity-50 cursor-not-allowed':
+                                                form.isLoading,
+                                        }"
                                     >
+                                        <Spinner
+                                            class="animate-spin w-5"
+                                            v-if="!!form.isLoading"
+                                        />
                                         Save
                                     </button>
                                 </div>
@@ -291,50 +311,30 @@
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends Form">
+export interface Form {}
+import { UserCircleIcon } from "@heroicons/vue/24/solid";
+// @ts-ignore
+import Spinner from "@/assets/spinner.svg?component";
 import {
     Dialog,
     DialogPanel,
     TransitionChild,
     TransitionRoot,
 } from "@headlessui/vue";
-import { reactive } from "vue";
-import { useVModel } from "@vueuse/core";
-import { useAxios } from "@vueuse/integrations/useAxios";
+import { useVModels } from "@vueuse/core";
 
 interface Props {
+    form: T;
     open: boolean;
 }
 
 interface Emits {
-    (e: "update:open", value: boolean): void;
+    (e: "update:form", value: Props["form"]): void;
+    (e: "submit"): void;
+    (e: "reset"): void;
 }
 const emits = defineEmits<Emits>();
 const props = defineProps<Props>();
-const open = useVModel(props, "open", emits);
-
-import { UserCircleIcon } from "@heroicons/vue/24/solid";
-import { instance } from "@/api/instance";
-
-const form = reactive({
-    name: "John Doe",
-    email: "john.doe@gmail.com",
-    password: "JohnDoe123",
-    phone_number: "+601123049307",
-    username: "johndoe",
-    image_url:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    role: "Software Engineer",
-    description: "I am a software engineer",
-});
-
-const { execute, data, error, isLoading, response } = useAxios(
-    "/employees",
-    { method: "POST" },
-    instance,
-);
-const handleSubmit = () => {
-    //open.value = false;
-    execute({ data: form });
-};
+const { form, open } = useVModels(props, emits);
 </script>

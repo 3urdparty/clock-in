@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Employee extends Model
 {
-    protected $fillable = ['imageUrl', 'role', 'description', 'user_id', 'username'];
+    protected $fillable = ['image_url', 'role', 'description', 'user_id', 'username'];
     use HasFactory;
     public function user(): BelongsTo
     {
