@@ -48,21 +48,22 @@
     </div>
 </template>
 <script setup lang="ts">
-import { useFetch } from "@vueuse/core";
+import { instance } from "@/api/instance";
 import { ClockIcon, FingerPrintIcon } from "@heroicons/vue/24/outline";
 import FingerprintTable from "./Partials/FingerprintTable.vue";
 import { ref } from "vue";
 import AddFingerprintModal from "./Partials/AddFingerprintModal.vue";
 import Table from "./Partials/Table.vue";
 import EmployeeCard from "./Partials/EmployeeCard.vue";
+import { useAxios } from "@vueuse/integrations/useAxios";
 interface Props {
     id: string;
 }
 const props = defineProps<Props>();
-const { data: employee } = useFetch<App.Models.Employee>(
-    `${import.meta.env.VITE_APP_API_URL}/employees/${props.id}`,
-)
-    .get()
-    .json();
+const { data: employee } = useAxios<App.Models.Employee>(
+    `/employees/${props.id}`,
+    { method: "GET" },
+    instance,
+);
 const isOpen = ref(false);
 </script>

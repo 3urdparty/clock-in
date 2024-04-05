@@ -7,17 +7,17 @@
 <script setup lang="ts">
 import Card from "@/components/Card.vue";
 import Table from "@/pages/Employees/Partials/Table.vue";
-import { useFetch } from "@vueuse/core";
 import DeviceCard from "./Partials/DeviceCard.vue";
-
+import { useAxios } from "@vueuse/integrations/useAxios";
+import { instance } from "@/api/instance";
 interface Props {
     id: number;
 }
 
 const props = defineProps<Props>();
-const { data: device } = useFetch<App.Models.Device>(
-    `${import.meta.env.VITE_APP_API_URL}/devices/${props.id}`,
-)
-    .get()
-    .json();
+const { data: device } = useAxios<App.Models.Device>(
+    "/devices/" + props.id,
+    { method: "GET" },
+    instance,
+);
 </script>

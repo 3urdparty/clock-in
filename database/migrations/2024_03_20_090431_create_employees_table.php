@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('username');
-            $table->string('imageUrl');
+            $table->string('image_url')->nullable();
             $table->string('role');
             $table->longText('description');
             $table->foreignIdFor(\App\Models\User::class)->constrained();
@@ -28,7 +28,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('employees');
-        Schema::table('employees', function(Blueprint $table) {
+        Schema::table('employees', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
         });
     }

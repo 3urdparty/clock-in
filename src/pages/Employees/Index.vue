@@ -18,13 +18,13 @@
 import { PlusIcon } from "@heroicons/vue/20/solid";
 import Table from "@/pages/Employees/Partials/Table.vue";
 import CreateEmployeeForm from "@/pages/Employees/Partials/CreateEmployeeForm.vue";
-import { useFetch } from "@vueuse/core";
+import { useAxios } from "@vueuse/integrations/useAxios";
+import { instance } from "@/api/instance";
 import { ref } from "vue";
-const { data: employees } = useFetch<App.Models.Employee[]>(
-    `${import.meta.env.VITE_APP_API_URL}/employees/`,
-)
-    .get()
-    .json();
-
+const { data: employees } = useAxios<App.Models.Employee[]>(
+    "/employees",
+    { method: "GET" },
+    instance,
+);
 const showModal = ref(false);
 </script>

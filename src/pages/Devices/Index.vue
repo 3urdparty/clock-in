@@ -5,11 +5,12 @@
 </template>
 
 <script setup lang="ts">
-import { useFetch } from "@vueuse/core";
 import DeviceCard from "./Partials/DeviceCard.vue";
-const { data: devices } = useFetch<App.Models.Device[]>(
-    `${import.meta.env.VITE_APP_API_URL}/devices`,
-)
-    .get()
-    .json();
+import { useAxios } from "@vueuse/integrations/useAxios";
+import { instance } from "@/api/instance";
+const { data: devices } = useAxios<App.Models.Device[]>(
+    "/devices",
+    { method: "GET" },
+    instance,
+);
 </script>

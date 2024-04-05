@@ -300,7 +300,8 @@ const emits = defineEmits<Emits>();
 const props = defineProps<Props>();
 const open = useVModel(props, "open", emits);
 
-import { PhotoIcon, UserCircleIcon } from "@heroicons/vue/24/solid";
+import { UserCircleIcon } from "@heroicons/vue/24/solid";
+import { instance } from "@/api/instance";
 
 const form = reactive({
     name: "John Doe",
@@ -308,21 +309,15 @@ const form = reactive({
     password: "JohnDoe123",
     phone_number: "+601123049307",
     username: "johndoe",
-    imageUrl:
+    image_url:
         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     role: "Software Engineer",
     description: "I am a software engineer",
 });
 
-const { execute, data } = useAxios(
-    `${import.meta.env.VITE_APP_API_URL}/employees`,
-    { method: "POST" },
-    { immediate: false },
-);
+const { execute, data } = useAxios("/employees", { method: "POST" }, instance);
 const handleSubmit = () => {
     //open.value = false;
-    //@ts-ignore
-    execute(form);
-    console.log(data);
+    execute({ data: form });
 };
 </script>

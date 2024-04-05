@@ -85,5 +85,9 @@ import { RouterLink } from "vue-router";
 interface Props {
     data: App.Models.Employee[];
 }
-defineProps<Props>();
+
+//@ts-ignore
+withDefaults(defineProps<Props>(), () => ({
+    data: [],
+}));
 </script>

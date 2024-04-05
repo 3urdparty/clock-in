@@ -24,7 +24,6 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         $values = $request->all();
-        return response()->json($values);
         $user = User::create($values);
         $employee = Employee::make($values);
         $employee->user()->associate($user);

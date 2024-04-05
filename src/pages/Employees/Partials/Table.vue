@@ -302,7 +302,9 @@ import { ClockIcon } from "@heroicons/vue/24/outline";
 interface Props {
     data: App.Models.Employee[];
 }
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+    data: [],
+});
 
 import { useOffsetPagination } from "@vueuse/core";
 import { RouterLink } from "vue-router";
