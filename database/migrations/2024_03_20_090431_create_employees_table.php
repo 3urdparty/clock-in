@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('username');
             $table->string('image_url')->nullable();
             $table->string('role');
-            $table->longText('description');
+            $table->longText('description')->nullable();
             $table->foreignIdFor(\App\Models\User::class)->constrained();
         });
     }

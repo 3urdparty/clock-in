@@ -251,6 +251,19 @@
                                     </div>
                                 </div>
 
+                                {{ isCanceled ? "Canceled" : "Not cancelled" }}
+                                <br />
+                                {{ isLoading ? "Loading" : "Not loading" }}
+
+                                <br />
+                                {{ isFinished ? "Finished" : "Not finished" }}
+
+                                <br />
+                                {{ error ? "Error" : "No error" }}
+
+                                <br />
+                                {{ response }}
+                                <br />
                                 <div
                                     class="mt-6 flex items-center justify-end gap-x-6"
                                 >
@@ -315,7 +328,11 @@ const form = reactive({
     description: "I am a software engineer",
 });
 
-const { execute, data } = useAxios("/employees", { method: "POST" }, instance);
+const { execute, data, error, isLoading, response } = useAxios(
+    "/employees",
+    { method: "POST" },
+    instance,
+);
 const handleSubmit = () => {
     //open.value = false;
     execute({ data: form });

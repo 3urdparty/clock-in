@@ -23,7 +23,16 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        $values = $request->all();
+        $values = $request->validate([
+            "name" => "required|string",
+            "email" => "required|email|unique:users,email" . auth()->id(),
+            "password" => "required|string",
+            "phone_number" => "required|string",
+            "username" => "required|string",
+            "image_url" => "nullable|string",
+            "role" => "required|string",
+            "description" => "nullable|string",
+        ]);
         $user = User::create($values);
         $employee = Employee::make($values);
         $employee->user()->associate($user);
