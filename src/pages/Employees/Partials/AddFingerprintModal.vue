@@ -92,10 +92,10 @@
                                 <div class="mt-4">
                                     <div class="flex justify-center">
                                         <div
-                                            class="w-40 h-40 bg-slate-800 flex justify-center items-center rounded-full"
+                                            class="w-40 h-40 flex justify-center items-center rounded-full"
                                         >
                                             <Fingerprint
-                                                class="fill-white/40 w-32 h-32"
+                                                class="fill-slate-400/40 w-32 h-32"
                                             />
                                         </div>
                                     </div>
@@ -117,7 +117,7 @@
                             </button>
 
                             <button
-                                @click="step++"
+                                @click="requestScan(selectedDevice?.id)"
                                 v-if="step == 0"
                                 class="w-full px-4 py-2 mt-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md sm:mt-0 sm:w-1/2 sm:mx-2 hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                             >
@@ -125,7 +125,7 @@
                             </button>
                             <button
                                 @click="scanFingerprint"
-                                v-if="step == 1"
+                                v-if="step == 2"
                                 class="w-full px-4 py-2 mt-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md sm:mt-0 sm:w-1/2 sm:mx-2 hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                             >
                                 Scan Fingerprint
@@ -166,13 +166,24 @@ const { data: devices } = useAxios<App.Models.Device[]>(
 
 const selectedDevice = ref<App.Models.Device | null>(null);
 const { execute } = useAxios(
-    "/fingerprint/enroll",
+    "/fingerprints/enroll",
     { method: "POST" },
     instance,
 );
 const step = ref(0);
 
-const scanFingerprint = () => {
-    execute();
+const requestScan = (deviceId: number) => {
+    execute({
+        data: {
+            device_id: deviceId,
+            employee_id: props.employeeId,
+        },
+    })
+        .then(() => {
+            step.value = 1;
+        })
+        .catch(() => {
+            alert("Failed to request fingerprint scan.");
+        });
 };
 </script>

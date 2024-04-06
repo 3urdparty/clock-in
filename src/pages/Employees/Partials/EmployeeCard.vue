@@ -8,9 +8,11 @@
             alt="avatar"
         />
 
-        <div class="flex items-center px-6 py-3 bg-gray-900">
-            <ClockIcon class="w-6 h-6 text-white" />
-            <h1 class="mx-3 text-lg font-semibold text-white capitalize">
+        <div
+            class="flex items-center px-4 py-3 border-y bg-gray-50 text-slate-600"
+        >
+            <ClockIcon class="w-6 h-6" />
+            <h1 class="mx-3 text-md capitalize">
                 {{ employee.status }}
             </h1>
         </div>
@@ -73,27 +75,15 @@
             <div
                 class="flex items-center mt-4 text-gray-700 dark:text-gray-200"
             >
-                <svg
-                    aria-label="email icon"
-                    class="w-6 h-6 fill-current"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M3.00977 5.83789C3.00977 5.28561 3.45748 4.83789 4.00977 4.83789H20C20.5523 4.83789 21 5.28561 21 5.83789V17.1621C21 18.2667 20.1046 19.1621 19 19.1621H5C3.89543 19.1621 3 18.2667 3 17.1621V6.16211C3 6.11449 3.00333 6.06765 3.00977 6.0218V5.83789ZM5 8.06165V17.1621H19V8.06199L14.1215 12.9405C12.9499 14.1121 11.0504 14.1121 9.87885 12.9405L5 8.06165ZM6.57232 6.80554H17.428L12.7073 11.5263C12.3168 11.9168 11.6836 11.9168 11.2931 11.5263L6.57232 6.80554Z"
-                    />
-                </svg>
-
+                <EnvelopeIcon class="w-10 h-6 text-slate-400" />
                 <h1 class="px-2 text-sm">{{ employee.user?.email }}</h1>
             </div>
         </div>
     </div>
 </template>
 <script setup lang="ts">
-import { ClockIcon } from "@heroicons/vue/24/outline";
+import StatusTag from "@/components/StatusTag.vue";
+import { ClockIcon, EnvelopeIcon } from "@heroicons/vue/24/outline";
 interface Props {
     employee: App.Models.Employee;
 }

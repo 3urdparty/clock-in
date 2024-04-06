@@ -6,11 +6,6 @@
             @update:isOpen="(newIsOpen) => (isOpen = newIsOpen)"
         />
         <div :class="{ 'opacity-50': isOpen }">
-            <h2
-                class="capitalize text-lg font-medium text-gray-800 dark:text-white pb-6"
-            >
-                Employee Detail
-            </h2>
             <div class="flex gap-4">
                 <EmployeeCard :employee="employee" />
                 <div class="space-y-4 w-full">

@@ -39,7 +39,7 @@ class EmployeeController extends Controller
     public function show(string $id)
 
     {
-        $employee = Employee::with(['user', 'fingerprints', 'shifts'])->find($id);
+        $employee = Employee::with(['user', 'fingerprints', 'shifts'])->find($id)->append(['status']);
         return response()->json($employee);
     }
 
