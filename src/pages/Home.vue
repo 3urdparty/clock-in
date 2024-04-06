@@ -4,7 +4,7 @@
             <StatSection class="col-span-3" :data="statistics?.stats" />
             <Barchart :data="statistics?.barchart" />
             <LineChart />
-            <EmployeesCard :data="employees" />
+            <EmployeesCard :data="employees ?? []" />
         </div>
     </div>
 </template>

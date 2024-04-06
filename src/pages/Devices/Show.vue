@@ -5,7 +5,6 @@
     </div>
 </template>
 <script setup lang="ts">
-import Card from "@/components/Card.vue";
 import Table from "@/pages/Employees/Partials/Table.vue";
 import DeviceCard from "./Partials/DeviceCard.vue";
 import { useAxios } from "@vueuse/integrations/useAxios";
