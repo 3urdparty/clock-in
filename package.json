@@ -48,6 +48,7 @@
     "apexcharts": "^3.48.0",
     "axios": "^1.6.8",
     "flowbite": "^2.3.0",
+    "nodemcu-tool": "^3.2.1",
     "vue-router": "^4.3.0"
   }
 }
