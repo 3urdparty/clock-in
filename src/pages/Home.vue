@@ -15,6 +15,7 @@ import Barchart from "@/components/Barchart.vue";
 import EmployeesCard from "@/pages/Partials/EmployeesCard.vue";
 import { useAxios } from "@vueuse/integrations/useAxios";
 import { instance } from "@/api/instance";
+const url = `${import.meta.env.VITE_APP_URL}:${import.meta.env.VITE_APP_PORT}/api/`;
 const { data: employees } = useAxios<App.Models.Employee[]>(
     "/employees",
     { method: "GET" },
