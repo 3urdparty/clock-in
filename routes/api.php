@@ -1,5 +1,6 @@
 <?php
 
+use PhpMqtt\Client\Facades\MQTT;
 use App\Http\Controllers\Api\DeviceController;
 use App\Http\Controllers\Api\EmployeeController;
 use App\Http\Controllers\Api\FingerprintController;
@@ -168,5 +169,15 @@ Route::post('fingerprints/delete', function (Request $request) {
     ]);
     return response()->json([
         "message" => "Request to delete fingerprint sent successfully",
+    ]);
+});
+
+Route::get('test', function () {
+    MQTT::publish('device/test', 'Hello World!');
+    return response()->json([
+        "message" => "Test successful",
+    ]);
+    return response()->json([
+        "message" => "Test successful",
     ]);
 });
