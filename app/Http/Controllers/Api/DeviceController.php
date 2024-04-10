@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Device;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class DeviceController extends Controller
@@ -13,7 +14,7 @@ class DeviceController extends Controller
      */
     public function index()
     {
-        $devices = Device::all();
+        $devices = Device::all()->append('status');
         return response()->json($devices);
     }
 
@@ -28,19 +29,24 @@ class DeviceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Device $device)
     {
-        $device = Device::with(['shifts'])->find($id);
-        return response()->json($device);
 
+        return response()->json($device->append('status'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Device $device)
     {
-        //
+        $device->update($request->all());
+        $device->update([
+            'last_online' => now()->timestamp
+        ]);
+        return response()->json([
+            'device' => $device->id
+        ]);
     }
 
     /**

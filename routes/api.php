@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Queue\Events\JobQueued;
 use Illuminate\Queue\Jobs\Job;
 use Illuminate\Support\Facades\Route;
+use PhpMqtt\Client\MqttClient;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -173,10 +174,13 @@ Route::post('fingerprints/delete', function (Request $request) {
 });
 
 Route::get('test', function () {
-    MQTT::publish('device/test', 'Hello World!');
-    return response()->json([
-        "message" => "Test successful",
-    ]);
+    /** @var \PhpMqtt\Client\Contracts\MqttClient $mqtt */
+    $mqtt = MQTT::connection();
+    // $mqtt->publish('some/topic', 'foo', 1);
+    // $mqtt->publish('some/other/topic', 'bar', 2, true); // Retain the message
+    // $mqtt->loop(true);
+
+    $mqtt->publish('device/test3', 'foo');
     return response()->json([
         "message" => "Test successful",
     ]);

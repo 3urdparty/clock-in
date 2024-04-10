@@ -39,3 +39,15 @@ Content-Type: application/json
 
 DELETE http://192.168.253.251:8000/api/fingerprints/1
 Content-Type: application/json
+
+PUT http://127.0.0.1:8000/api/devices/1
+Content-Type: application/json
+
+{
+    "status": "online",
+    "battery": 100,
+    "proximity": 100,
+    "connection": "wifi",
+    "connection_strength": 100
+}
+

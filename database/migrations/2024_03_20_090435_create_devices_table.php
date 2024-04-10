@@ -17,12 +17,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('type');
             $table->longText('description');
-            $table->string('status');
             $table->float('proximity');
-            $table->string('imageUrl');
+            $table->string('image_url');
             $table->string('connection');
             $table->integer('connection_strength');
             $table->float('battery');
+            $table->timestamp('last_online')->nullable();
         });
     }
 
