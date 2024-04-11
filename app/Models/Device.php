@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -30,7 +31,6 @@ class Device extends Model
         'connection',
         'connection_strength',
         'battery',
-        'last_online',
     ];
     const STATUSES = [
         "online", "offline"
@@ -45,7 +45,7 @@ class Device extends Model
     public function status(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->last_online && now()->parse($this->last_online)->diffInMinutes() < 5 ? "online" : "offline"
+            get: fn () => $this->updated_at && now()->diffInMinutes($this->updated_at) < -1 ?   "offline" : "online"
         );
     }
 }

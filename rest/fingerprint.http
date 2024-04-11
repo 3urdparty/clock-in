@@ -11,7 +11,7 @@ Content-Type: application/json
 
 GET http://192.168.253.251:8000/api/sync
 
-POST http://172.20.10.2:8000/api/fingerprints/enroll
+POST http://127.0.0.1:8000/api/fingerprints/enroll
 Content-Type: application/json
 
 {
@@ -44,7 +44,6 @@ PUT http://127.0.0.1:8000/api/devices/1
 Content-Type: application/json
 
 {
-    "status": "online",
     "battery": 100,
     "proximity": 100,
     "connection": "wifi",

@@ -104,11 +104,12 @@
                         </div>
 
                         <div
-                            class="mt-4 sm:mt-6 sm:flex sm:items-center sm:-mx-2"
+                            class="mt-4 sm:mt-6 sm:flex sm:items-end sm:-mx-2 sm:justify-end"
                         >
                             <button
                                 @click="
                                     isOpen = false;
+                                    selectedDevice = null;
                                     step = 0;
                                 "
                                 class="w-full px-4 py-2 text-sm font-medium tracking-wide text-gray-700 capitalize transition-colors duration-300 transform border border-gray-200 rounded-md sm:w-1/2 sm:mx-2 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800 hover:bg-gray-100 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-40"
@@ -117,9 +118,10 @@
                             </button>
 
                             <button
-                                @click="requestScan(selectedDevice?.id)"
+                                @click="requestScan"
                                 v-if="step == 0"
-                                class="w-full px-4 py-2 mt-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md sm:mt-0 sm:w-1/2 sm:mx-2 hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                                class="w-full px-4 py-2 mt-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md sm:mt-0 sm:w-1/2 sm:mx-2 hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 disabled:opacity-20"
+                                :disabled="!selectedDevice"
                             >
                                 Select Device
                             </button>
@@ -172,18 +174,19 @@ const { execute } = useAxios(
 );
 const step = ref(0);
 
-const requestScan = (deviceId: number) => {
+const requestScan = () => {
+    if (!selectedDevice.value) return;
     execute({
         data: {
-            device_id: deviceId,
+            device_id: selectedDevice.value,
             employee_id: props.employeeId,
         },
     })
         .then(() => {
             step.value = 1;
         })
-        .catch(() => {
-            alert("Failed to request fingerprint scan.");
+        .catch((e) => {
+            alert(e);
         });
 };
 </script>

@@ -14,7 +14,7 @@
                     class="mt-1 flex items-baseline justify-between md:block lg:flex"
                 >
                     <div
-                        class="flex items-baseline text-2xl font-semibold text-indigo-600"
+                        class="flex items-baseline text-2xl font-semibold text-blue-600"
                     >
                         {{ item.stat }}
                         <span

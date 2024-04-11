@@ -1,6 +1,6 @@
 <template>
     <section class="container mx-auto">
-        <div class="flex flex-col">
+        <div class="flex flex-col h-[65vh]">
             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div
                     class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8"
@@ -72,7 +72,7 @@
                                         scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
                                     >
-                                        Shift
+                                        Most Recent Shift
                                     </th>
 
                                     <th
@@ -207,26 +207,79 @@
                                     </td>
 
                                     <td
-                                        class="px-4 py-4 text-sm whitespace-nowrap"
+                                        class="px-0 pl-4 py-4 text-sm whitespace-nowrap"
                                     >
-                                        <button
-                                            class="px-1 py-1 text-gray-500 transition-colors duration-200 rounded-lg dark:text-gray-300 hover:bg-gray-100"
+                                        <Menu
+                                            as="div"
+                                            class="relative inline-block text-left"
                                         >
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                stroke-width="1.5"
-                                                stroke="currentColor"
-                                                class="w-6 h-6"
+                                            <div>
+                                                <MenuButton
+                                                    class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-2 py-2 text-sm font-semibold text-gray-900 hover:bg-slate-100"
+                                                >
+                                                    <EllipsisVerticalIcon
+                                                        class="h-5 w-5 text-gray-400"
+                                                        aria-hidden="true"
+                                                    />
+                                                </MenuButton>
+                                            </div>
+
+                                            <transition
+                                                enter-active-class="transition ease-out duration-100"
+                                                enter-from-class="transform opacity-0 scale-95"
+                                                enter-to-class="transform opacity-100 scale-100"
+                                                leave-active-class="transition ease-in duration-75"
+                                                leave-from-class="transform opacity-100 scale-100"
+                                                leave-to-class="transform opacity-0 scale-95"
                                             >
-                                                <path
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"
-                                                />
-                                            </svg>
-                                        </button>
+                                                <MenuItems
+                                                    class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                                                >
+                                                    <div class="py-1">
+                                                        <MenuItem
+                                                            v-slot="{ active }"
+                                                        >
+                                                            <a
+                                                                href="#"
+                                                                :class="[
+                                                                    active
+                                                                        ? 'bg-gray-100 text-gray-900'
+                                                                        : 'text-gray-700',
+                                                                    'group flex items-center px-4 py-2 text-sm',
+                                                                ]"
+                                                            >
+                                                                <PencilSquareIcon
+                                                                    class="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500"
+                                                                    aria-hidden="true"
+                                                                />
+                                                                Edit
+                                                            </a>
+                                                        </MenuItem>
+                                                    </div>
+                                                    <div class="py-1">
+                                                        <MenuItem
+                                                            v-slot="{ active }"
+                                                        >
+                                                            <a
+                                                                href="#"
+                                                                :class="[
+                                                                    active
+                                                                        ? 'bg-gray-100 text-red-900'
+                                                                        : 'text-red-700',
+                                                                    'group flex items-center px-4 py-2 text-sm ',
+                                                                ]"
+                                                            >
+                                                                <TrashIcon
+                                                                    class="mr-3 h-5 w-5 text-red-400 group-hover:text-red-500"
+                                                                    aria-hidden="true"
+                                                                />
+                                                                Delete
+                                                            </a>
+                                                        </MenuItem>
+                                                    </div>
+                                                </MenuItems>
+                                            </transition>
+                                        </Menu>
                                     </td>
                                 </tr>
                             </tbody>
@@ -237,8 +290,8 @@
         </div>
 
         <div class="flex items-center justify-between mt-6">
-            <a
-                href="#"
+            <button
+                @click="prev"
                 class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800"
             >
                 <svg
@@ -257,7 +310,7 @@
                 </svg>
 
                 <span> previous </span>
-            </a>
+            </button>
 
             <div class="items-center hidden md:flex gap-x-3">
                 <button
@@ -271,8 +324,8 @@
                 </button>
             </div>
 
-            <a
-                href="#"
+            <button
+                @click="next"
                 class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800"
             >
                 <span> Next </span>
@@ -291,7 +344,7 @@
                         d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
                     />
                 </svg>
-            </a>
+            </button>
         </div>
     </section>
 </template>
@@ -309,11 +362,23 @@ const props = withDefaults(defineProps<Props>(), {
 import { useOffsetPagination } from "@vueuse/core";
 import { RouterLink } from "vue-router";
 
-const pageSize = 8;
+const pageSize = 7;
 
-const { currentPage, pageCount } = useOffsetPagination({
+const { currentPage, pageCount, next, prev } = useOffsetPagination({
     total: props.data.length,
     page: 1,
     pageSize: pageSize,
 });
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
+import {
+    ArchiveBoxIcon,
+    ArrowRightCircleIcon,
+    ChevronDownIcon,
+    DocumentDuplicateIcon,
+    EllipsisVerticalIcon,
+    HeartIcon,
+    PencilSquareIcon,
+    TrashIcon,
+    UserPlusIcon,
+} from "@heroicons/vue/20/solid";
 </script>

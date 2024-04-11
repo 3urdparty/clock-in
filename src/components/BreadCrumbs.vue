@@ -2,10 +2,10 @@
     <nav class="flex" aria-label="Breadcrumb">
         <ol
             role="list"
-            class="flex space-x-4 rounded-lg border border-slate-200 bg-white px-6 shadow-sm"
+            class="flex space-x-4 rounded-lg border border-slate-300 bg-white px-6 shadow-sm"
         >
             <li class="flex">
-                <div class="flex items-center py-2">
+                <div class="flex items-center py-0">
                     <RouterLink
                         to="/"
                         class="text-gray-400 hover:text-gray-500"
@@ -29,7 +29,7 @@
             <li class="flex" v-for="link in links.slice(0)">
                 <div class="flex items-center">
                     <svg
-                        class="h-full w-6 flex-shrink-0 text-gray-200"
+                        class="h-full w-6 flex-shrink-0 text-gray-300"
                         viewBox="0 0 24 44"
                         preserveAspectRatio="none"
                         fill="currentColor"

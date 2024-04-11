@@ -1,9 +1,0 @@
-{
-    "baudrate": "115200",
-    "port": "/dev/tty.usbserial-54F90022741",
-    "minify": true,
-    "compile": false,
-    "keeppath": true
-
-
-}

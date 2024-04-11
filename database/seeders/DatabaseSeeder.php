@@ -31,9 +31,5 @@ class DatabaseSeeder extends Seeder
                 $shift->device()->associate(Device::first());
             }));
         });
-
-        Employee::all()->first()->fingerprints()->saveMany(Fingerprint::factory(1)->make()->each(function (Fingerprint $fingerprint) {
-            $fingerprint->device()->associate(Device::first());
-        }));
     }
 }

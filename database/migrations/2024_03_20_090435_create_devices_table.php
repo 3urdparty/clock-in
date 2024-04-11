@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('connection');
             $table->integer('connection_strength');
             $table->float('battery');
-            $table->timestamp('last_online')->nullable();
         });
     }
 

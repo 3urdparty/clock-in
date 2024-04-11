@@ -143,16 +143,16 @@ Route::get('queue', function () {
 });
 
 Route::post('fingerprints/enroll', function (Request $request) {
-    $request = $request->all();
+    $values = $request->all();
     $fingerprint_id = Fingerprint::all()->count() + 1;
     FingerprintAction::create([
         "action" => "add",
         "fingerprint_id" => $fingerprint_id,
-        "employee_id" => $request['employee_id'],
-        "device_id" => $request['device_id']
+        "employee_id" => $values["employee_id"],
+        "device_id" => $values["device_id"],
     ]);
     return response()->json([
-        "message" => "Request to enroll fingerprint sent successfully",
+        "message" =>  "Enrolled successfully",
     ]);
 });
 

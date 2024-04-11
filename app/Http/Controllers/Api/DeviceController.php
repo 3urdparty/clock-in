@@ -40,10 +40,9 @@ class DeviceController extends Controller
      */
     public function update(Request $request, Device $device)
     {
+
         $device->update($request->all());
-        $device->update([
-            'last_online' => now()->timestamp
-        ]);
+        $device->update(['connection_strength' => rand(10, 90)]);
         return response()->json([
             'device' => $device->id
         ]);
