@@ -20,11 +20,11 @@ class DeviceFactory extends Factory
             'name' => "BSAT" . fake()->randomNumber(4),
             'type' => fake()->randomElement(\App\Models\Device::TYPES),
             'description' => fake()->sentence(),
-            'proximity' => fake()->randomFloat(2, 0, 100),
+            'proximity' => fake()->numberBetween(0, 100),
             'image_url' => fake()->imageUrl(),
             'connection' => fake()->randomElement(\App\Models\Device::CONNECTION_TYPES),
-            'connection_strength' => fake()->numberBetween(1, 5),
-            'battery' => fake()->randomFloat(2, 0, 100),
+            'connection_strength' => fake()->numberBetween(0, 3),
+            'battery' => fake()->numberBetween(0, 100),
         ];
     }
 }

@@ -13,6 +13,7 @@ class Device extends Model
 
     use HasFactory;
 
+
     const TYPES = [
         "fingerprint",
         "face",
@@ -31,6 +32,11 @@ class Device extends Model
         'connection',
         'connection_strength',
         'battery',
+    ];
+    protected $casts = [
+        'proximity' => 'integer',
+        'connection_strength' => 'integer',
+        'battery' => 'integer',
     ];
     const STATUSES = [
         "online", "offline"
