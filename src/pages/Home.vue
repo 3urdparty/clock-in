@@ -5,16 +5,9 @@
                 v-if="isLoading || error"
                 class="grid grid-cols-3 gap-2 col-span-3"
             >
-                <div
-                    class="rounded-md px-4 py-5 sm:p-6 bg-gradient-to-br from-blue-200/50 to-blue-300/30 animate-pulse h-"
-                ></div>
                 <div class="space-y-2">
-                    <div
-                        class="rounded-md px-4 py-2 h-6 sm:p-6 bg-gradient-to-br from-blue-200/50 to-blue-300/30 animate-pulse"
-                    ></div>
-                    <div
-                        class="rounded-md px-4 py-2 h-6 sm:p-6 bg-gradient-to-br from-blue-200/50 to-blue-300/30 animate-pulse"
-                    ></div>
+                    <Skeleton />
+                    <Skeleton />
                 </div>
                 <div class="flex gap-1 w-full">
                     <div
@@ -52,6 +45,7 @@ import Barchart from "@/components/Barchart.vue";
 import EmployeesCard from "@/pages/Partials/EmployeesCard.vue";
 import { useAxios } from "@vueuse/integrations/useAxios";
 import { instance } from "@/api/instance";
+import Skeleton from "@/components/Skeleton.vue";
 const { data: employees } = useAxios<App.Models.Employee[]>(
     "/employees",
     { method: "GET" },

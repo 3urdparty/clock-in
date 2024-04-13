@@ -2,13 +2,13 @@
     <div>
         <div v-if="isLoading || error" class="grid grid-cols-2 gap-2">
             <div
-                class="bg-gray-200 animate-pulse w-full h-20 rounded-md bg-gradient-to-br from-blue-200/50 to-blue-200/30"
+                class="animate-pulse w-full h-20 rounded-md bg-gradient-to-br from-blue-200/50 to-blue-200/30"
             ></div>
             <div
-                class="bg-gray-200 animate-pulse w-full h-20 rounded-md bg-gradient-to-br from-blue-200/50 to-blue-200/30"
+                class="animate-pulse w-full h-20 rounded-md bg-gradient-to-br from-blue-200/50 to-blue-200/30"
             ></div>
             <div
-                class="bg-gray-200 animate-pulse w-full h-80 rounded-md col-span-2 bg-gradient-to-br from-blue-200/50 to-blue-300/30"
+                class="animate-pulse w-full h-80 rounded-md col-span-2 bg-gradient-to-br from-blue-200/50 to-blue-200/30"
             ></div>
         </div>
         <template v-else>

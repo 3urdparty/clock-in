@@ -50,58 +50,56 @@ String data;
 int finger_id = 0;
 uint8_t id;
 
-// Function headers
-void connectToWiFi();
 
 // Setup
 void setup() {
     WiFi.mode(WIFI_AP_STA);
     WiFi.softAP(soft_ap_ssid, soft_ap_password);
-    // Serial.begin(115200);
+    Serial.begin(115200);
 
   // Setup OLED screen
-  // if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
-  //   log("SSD1306 allocation failed");
-  //   for(;;);
-  // }
+  if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
+    log("SSD1306 allocation failed");
+    for(;;);
+  }
   //
-  // display.display();
-  // delay(2000); // Pause for 2 seconds
-  // display.clearDisplay();
+  display.display();
+  delay(2000); // Pause for 2 seconds
+  display.clearDisplay();
   //
 
   // Connecting time client
-  // timeClient.begin();
-  // log("Time client started Successfully");
+  timeClient.begin();
+  log("Time client started Successfully");
   //
   // // Setup the Fingerprint sensor
-  // finger.begin(57600);
-  // log("Fingerprint test started...");
+  finger.begin(57600);
+  log("Fingerprint test started...");
   //
-  // if (finger.verifyPassword()) {
-  //   log("Fingerprint Sensor found");
-  //   display.clearDisplay();
-  //   display.drawBitmap( 34, 0, FinPr_valid_bits, FinPr_valid_width, FinPr_valid_height, WHITE);
-  //   display.display();
-  // } else {
-  //   log("Fingerprint Sensor not found");
-  //   display.clearDisplay();
-  //   display.drawBitmap( 32, 0, FinPr_failed_bits, FinPr_failed_width, FinPr_failed_height, WHITE);
-  //   display.display();
-  //   while (1) { delay(20); }
-  // }
+  if (finger.verifyPassword()) {
+    log("Fingerprint Sensor found");
+    display.clearDisplay();
+    display.drawBitmap( 34, 0, FinPr_valid_bits, FinPr_valid_width, FinPr_valid_height, WHITE);
+    display.display();
+  } else {
+    log("Fingerprint Sensor not found");
+    display.clearDisplay();
+    display.drawBitmap( 32, 0, FinPr_failed_bits, FinPr_failed_width, FinPr_failed_height, WHITE);
+    display.display();
+    while (1) { delay(20); }
+  }
   //
-  // finger.getTemplateCount();
-  // log("Fingerprint templates: " + String(finger.templateCount));
+  finger.getTemplateCount();
+  log("Fingerprint templates: " + String(finger.templateCount));
 }
 
 // Loop
 void loop() {
-  // delay(1000);
-  // finger_id = scan();
-  // delay(50);
-  // displayEmployee();
-  // syncWithServer();
+  delay(1000);
+  finger_id = scan();
+  delay(50);
+  displayEmployee();
+  syncWithServer();
   delay(1000);
     sendDeviceStatus();
 }

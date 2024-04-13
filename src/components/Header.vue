@@ -5,7 +5,7 @@
             <div class="min-w-0 flex-1">
                 <div class="flex items-center pt-2">
                     <h2
-                        class="text-2xl font-bold leading-7 text-blue-500 sm:truncate sm:text-3xl sm:tracking-tight"
+                        class="text-2xl font-bold leading-7 text-gray-700 sm:truncate sm:text-3xl sm:tracking-tight"
                     >
                         {{ route.name }}
                     </h2>
