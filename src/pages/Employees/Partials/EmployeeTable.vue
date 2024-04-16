@@ -1,5 +1,5 @@
 <template>
-    <section class="container mx-auto">
+    <section class="container mx-auto text-black">
         <div class="flex flex-col h-[65vh]">
             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div

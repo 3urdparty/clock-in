@@ -1,9 +1,5 @@
 <template>
     <div>
-        <h3 class="text-base font-medium leading-6 text-gray-400 pb-1">
-            Last 30 days
-        </h3>
-
         <dl
             class="border mt-8 grid grid-cols-1 divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow-sm md:grid-cols-3 md:divide-x md:divide-y-0"
             v-if="data"

@@ -29,6 +29,7 @@
     </div>
 </template>
 <script setup lang="ts">
+import { formatTime } from "@/utils/formatTime";
 import { defineProps } from "vue";
 interface Props {
     start: number;
@@ -36,7 +37,4 @@ interface Props {
     ongoing: boolean;
 }
 const props = defineProps<Props>();
-const pad = (n: number) => (n.toString().length <= 1 ? "0" : "") + n.toString();
-const formatTime = (time: number) =>
-    `${pad(Math.floor(time))}:${pad(Math.floor((time - Math.floor(time)) * 60))}`;
 </script>

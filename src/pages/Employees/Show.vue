@@ -36,7 +36,8 @@
                         </div>
                     </div>
                     <FingerprintTable :data="employee.fingerprints" />
-                    <Table :data="[]" />
+
+                    <ShiftTable :data="employee?.shifts" />
                 </div>
             </div>
         </div>
@@ -48,7 +49,7 @@ import { ClockIcon, FingerPrintIcon } from "@heroicons/vue/24/outline";
 import FingerprintTable from "./Partials/FingerprintTable.vue";
 import { ref } from "vue";
 import AddFingerprintModal from "./Partials/AddFingerprintModal.vue";
-import Table from "./Partials/Table.vue";
+import ShiftTable from "./Partials/ShiftTable.vue";
 import EmployeeCard from "./Partials/EmployeeCard.vue";
 import { useAxios } from "@vueuse/integrations/useAxios";
 interface Props {

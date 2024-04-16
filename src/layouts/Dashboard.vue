@@ -3,13 +3,8 @@
         <aside
             class="flex flex-col w-64 h-screen px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700"
         >
-            <a href="#" class="flex gap-2 items-center">
-                <img src="/src/assets/Logo.png" class="w-20" />
-                <h1
-                    class="text-[#0795F1] font-bold font-sora text-2xl font-sans"
-                >
-                    ClockIn
-                </h1>
+            <a href="#" class="flex gap-2 items-center justify-center">
+                <img src="/src/assets/Logo.png" class="w-20 opacity-80" />
             </a>
 
             <div>

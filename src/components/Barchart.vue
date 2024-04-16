@@ -78,7 +78,7 @@
                     <dd
                         class="text-gray-900 text-sm dark:text-white font-semibold"
                     >
-                        {{ data?.last_7_days?.average.toFixed(1) ?? "-" }} hrs
+                        6.4hrs
                     </dd>
                 </dl>
                 <dl class="flex items-center justify-end">
@@ -105,7 +105,7 @@
             ><div
                 class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between"
             >
-                <div class="flex justify-between items-center pt-5">
+                <div class="flex justify-between items-center pt-2">
                     <!-- Button -->
                     <button
                         id="dropdownDefaultButton"
@@ -179,7 +179,7 @@
                     </div>
                     <a
                         href="#"
-                        class="uppercase text-sm font-semibold inline-flex items-center rounded-lg text-blue-600 hover:text-blue-700 dark:hover:text-blue-500 hover:bg-gray-100 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 px-3 py-2"
+                        class="uppercase text-sm font-semibold inline-flex items-center rounded-lg text-blue-600 hover:text-blue-700 dark:hover:text-blue-500 hover:bg-gray-100 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 px-3"
                     >
                         Week Report
                         <svg
@@ -238,10 +238,10 @@ withDefaults(defineProps<Props>(), {
     }),
 });
 const options = {
-    colors: ["#1A56DB", "#FDBA8C"],
+    colors: ["#1A56DB", "#90CDF4"],
     series: [
         {
-            name: "Organic",
+            name: "Last Week",
             color: "#1A56DB",
             data: [
                 { x: "Mon", y: 231 },
@@ -254,8 +254,8 @@ const options = {
             ],
         },
         {
-            name: "Social media",
-            color: "#FDBA8C",
+            name: "Current Week",
+            color: "#90CDF4",
             data: [
                 { x: "Mon", y: 232 },
                 { x: "Tue", y: 113 },

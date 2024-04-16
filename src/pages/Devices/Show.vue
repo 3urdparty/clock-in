@@ -5,7 +5,7 @@
     </div>
 </template>
 <script setup lang="ts">
-import Table from "@/pages/Employees/Partials/Table.vue";
+import Table from "@/pages/Employees/Partials/EmployeeTable.vue";
 import DeviceCard from "./Partials/DeviceCard.vue";
 import { useAxios } from "@vueuse/integrations/useAxios";
 import { instance } from "@/api/instance";

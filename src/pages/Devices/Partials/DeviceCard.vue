@@ -1,6 +1,9 @@
 <template>
     <div
         class="flex max-w-md overflow-hidden bg-white rounded-lg shadow-sm dark:bg-gray-800 h-full border"
+        :class="{
+            'opacity-50': modelValue.status == 'offline',
+        }"
     >
         <img :src="modelValue.image_url" class="w-1/3 object-cover" />
 
@@ -38,7 +41,10 @@
                     </p>
                 </div>
 
-                <div class="flex items-center gap-1">
+                <div
+                    class="flex items-center gap-1"
+                    v-if="modelValue.status == 'online'"
+                >
                     <WifiIcon :modelValue="modelValue.connection_strength" />
                     <BatteryIcon :modelValue="modelValue.battery" />
                 </div>

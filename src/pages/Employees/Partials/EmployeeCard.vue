@@ -22,7 +22,9 @@
                 {{ employee.user?.name }}
             </h1>
 
-            <p class="py-2 text-gray-700 dark:text-gray-400">
+            <p
+                class="py-2 text-gray-700 text-sm text-slate-400 dark:text-gray-400"
+            >
                 {{ employee.description }}
             </p>
 
