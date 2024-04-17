@@ -31,7 +31,7 @@
                         v-model="form.email"
                         type="email"
                         autocomplete="email"
-                        required=""
+                        required
                         class="relative block w-full rounded-t-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                         placeholder="Email address"
                     />
@@ -44,7 +44,7 @@
                         name="password"
                         type="password"
                         autocomplete="current-password"
-                        required=""
+                        required
                         class="relative block w-full rounded-b-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                         placeholder="Password"
                     />
@@ -90,7 +90,7 @@
 <script setup lang="ts">
 import logoUrl from "@/assets/Logo.svg?url";
 import { useAuthStore } from "@/stores/auth";
-import { ref, reactive } from "vue";
+import { reactive } from "vue";
 import { useRouter } from "vue-router";
 const form = reactive({
     email: "",
@@ -108,6 +108,7 @@ const submit = () => {
             form.password === "Admin123+"
         ) {
             auth.login();
+            router.push("/");
         } else {
             alert("Invalid Credentials");
         }

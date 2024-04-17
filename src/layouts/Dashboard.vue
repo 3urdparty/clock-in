@@ -64,6 +64,13 @@
 
                         <span class="mx-4 font-medium">Settings</span>
                     </RouterLink>
+                    <button
+                        @click="() => logout()"
+                        class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 w-full"
+                    >
+                        <ArrowLeftEndOnRectangleIcon class="w-5" />
+                        <span class="mx-4 font-medium">Logout</span>
+                    </button>
                 </nav>
 
                 <a href="#" class="flex items-center px-4 -mx-2">
@@ -83,7 +90,7 @@
         <main
             class="dark:bg-slate-950 w-1/3 md:w-full sm:w-1/2 overflow-scroll"
         >
-            <Header class="px-8 pt-6" />
+            <Header class="px- pt-6" />
             <slot />
         </main>
     </div>
@@ -91,6 +98,8 @@
 <script setup lang="ts">
 import Header from "@/components/Header.vue";
 import LogoIcon from "@/assets/Logo.svg?url";
+import { useAuthStore } from "@/stores/auth";
+const { logout } = useAuthStore();
 
 import {
     RectangleStackIcon,
@@ -100,6 +109,7 @@ import {
 } from "@heroicons/vue/24/outline";
 
 import { useToggle } from "@vueuse/core";
+import { ArrowLeftEndOnRectangleIcon } from "@heroicons/vue/20/solid";
 
 const [value, toggle] = useToggle();
 const links = [

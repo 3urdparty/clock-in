@@ -3,7 +3,7 @@
         class="w-full max-w-[250px] overflow-hidden bg-white rounded-lg shadow-sm dark:bg-gray-800 h-fit border"
     >
         <img
-            class="object-cover object-center w-full h-56"
+            class="object-cover object-center w-full h-56 opacity-90"
             :src="employee.image_url"
             alt="avatar"
         />

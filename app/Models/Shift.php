@@ -11,8 +11,12 @@ class Shift extends Model
 {
     use HasFactory;
 
-    protected $appends = ['duration'];
-    protected $with = ['device', 'employee'];
+    protected $appends = ['duration', 'week_number', 'week_day'];
+    protected $with = ['device', 'employee.user'];
+    protected $casts = [
+        'start' => 'float',
+        'end' => 'float',
+    ];
 
     protected $fillable = [
         'device_id',

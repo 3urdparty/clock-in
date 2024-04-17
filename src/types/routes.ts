@@ -288,12 +288,6 @@ const Routes: Record<App.Route.Name, App.Route.Link> = {
     params: undefined,
     methods: ['POST'],
   },
-  'api/test': {
-    name: 'api/test',
-    path: '/api/test',
-    params: undefined,
-    methods: ['GET'],
-  },
   'up': {
     name: 'up',
     path: '/up',
@@ -314,7 +308,7 @@ declare global {
   }
 }
 
-const appUrl = 'http://localhost'
+const appUrl = 'http://127.0.0.1'
 
 if (typeof window !== 'undefined') {
   if (typeof window !== 'undefined' && typeof window?.Routes !== 'undefined')

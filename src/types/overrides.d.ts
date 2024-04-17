@@ -14,10 +14,20 @@ declare namespace App.Models {
         average: number;
         utilization_rate: number;
         current: { x: string, y: number }[];
-        previous: { x: string, y: number }[];
+        last_7_days: {
+            total: number;
+            change: number;
+            average: number;
+            utilization_rate: number;
+            current: { x: string, y: number }[];
+            previous: { x: string, y: number }[];
+        };
+
     }
+
     export interface LineChart {
         x: string;
         y: number;
     }
 }
+

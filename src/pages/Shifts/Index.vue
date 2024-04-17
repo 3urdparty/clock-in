@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="overflow-scroll h-[82vh] border rounded-md">
-            <Calendar :data="shifts" />
+        <div class="overflow-scroll h-[73vh] border rounded-md mt-8">
+            <Calendar :data="shifts as App.Models.Shift[]" />
         </div>
     </div>
 </template>

@@ -212,29 +212,14 @@ interface Props {
 }
 
 withDefaults(defineProps<Props>(), {
+    //@ts-ignore
     data: () => ({
-        total: 10,
-        change: 10,
-        average: 10,
-        utilization_rate: 10,
-        current: [
-            { x: "Mon", y: 231 },
-            { x: "Tue", y: 122 },
-            { x: "Wed", y: 63 },
-            { x: "Thu", y: 421 },
-            { x: "Fri", y: 122 },
-            { x: "Sat", y: 323 },
-            { x: "Sun", y: 111 },
-        ],
-        previous: [
-            { x: "Mon", y: 232 },
-            { x: "Tue", y: 113 },
-            { x: "Wed", y: 341 },
-            { x: "Thu", y: 224 },
-            { x: "Fri", y: 522 },
-            { x: "Sat", y: 411 },
-            { x: "Sun", y: 243 },
-        ],
+        last_7_days: [] as { x: string; y: number }[],
+        total: 0,
+        utilization_rate: 0,
+        change: 0,
+        average: 0,
+        current: [] as { x: string; y: number }[],
     }),
 });
 const options = {

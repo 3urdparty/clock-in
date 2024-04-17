@@ -7,11 +7,25 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Employee extends Model
 {
-    protected $fillable = ['image_url', 'role', 'description', 'user_id', 'username'];
     use HasFactory;
+
+    protected $fillable = ['image_url', 'role', 'description', 'user_id', 'username'];
+
+    protected $with = [
+        'user',
+    ];
+    protected $casts = [
+        'status' => 'string',
+    ];
+
+    public const STATUS_TYPES = ['clocked-in', 'clocked-out'];
+    public const ROLES = ['admin', 'employee'];
+
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -28,11 +42,8 @@ class Employee extends Model
         return $this->hasMany(Shift::class);
     }
 
-    public const STATUS_TYPES = ['clocked-in', 'clocked-out'];
-    public const ROLES = ['admin', 'employee'];
 
-
-    public function recentShift()
+    public function recentShift(): HasOne
     {
         return $this->hasOne(Shift::class)->latestOfMany();
     }

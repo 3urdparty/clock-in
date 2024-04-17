@@ -173,15 +173,16 @@ Route::post('fingerprints/delete', function (Request $request) {
     ]);
 });
 
-Route::get('test', function () {
-    /** @var \PhpMqtt\Client\Contracts\MqttClient $mqtt */
-    $mqtt = MQTT::connection();
-    // $mqtt->publish('some/topic', 'foo', 1);
-    // $mqtt->publish('some/other/topic', 'bar', 2, true); // Retain the message
-    // $mqtt->loop(true);
-
-    $mqtt->publish('device/test3', 'foo');
-    return response()->json([
-        "message" => "Test successful",
-    ]);
-});
+// Route::get('test', function () {
+//     /** @var \PhpMqtt\Client\Contracts\MqttClient $mqtt */
+//     $mqtt = MQTT::connection();
+//     // $mqtt->publish('some/topic', 'foo', 1);
+//     // $mqtt->publish('some/other/topic', 'bar', 2, true); // Retain the message
+//     // $mqtt->loop(true);
+//
+//     $mqtt->publish('device/test3', 'foo');
+//     return response()->json([
+//         "message" => "Test successful",
+//     ]);
+// });
+//

@@ -15,8 +15,9 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = Employee::with(['user', 'recentShift'])->get()->append(['status']);
+        $employees = Employee::with(['user'])->get()->append(['status']);
         return response()->json($employees);
+        // return response()->json([]);
     }
 
     /**

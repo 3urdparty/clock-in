@@ -47,8 +47,9 @@
                             >
                                 <ShiftProgressBar
                                     class="w-60"
-                                    :start="shift.start"
-                                    :end="shift.end"
+                                    :start="shift.start as number"
+                                    :ongoing="!shift.end"
+                                    :end="shift.end as number"
                                 />
                             </td>
                             <td
@@ -92,7 +93,6 @@
 
 <script setup lang="ts">
 import ShiftProgressBar from "@/components/ShiftProgressBar.vue";
-import { UserIcon } from "@heroicons/vue/24/outline";
 
 interface Props {
     data: App.Models.Shift[];
@@ -101,13 +101,4 @@ interface Props {
 withDefaults(defineProps<Props>(), {
     data: () => [],
 });
-const people = [
-    {
-        name: "Lindsay Walton",
-        title: "Front-end Developer",
-        email: "lindsay.walton@example.com",
-        role: "Member",
-    },
-    // More people...
-];
 </script>

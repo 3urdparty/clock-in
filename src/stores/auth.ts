@@ -1,10 +1,11 @@
 import { createGlobalState, useLocalStorage } from "@vueuse/core"
 import { computed, ref } from "vue"
 
-import { useRoute, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 export interface User {
     name: string
 }
+
 export const useAuthStore = createGlobalState(
     () => {
         const user = useLocalStorage<User | null>('user', null)
@@ -13,10 +14,16 @@ export const useAuthStore = createGlobalState(
         const returnUrl = ref()
         const login = () => {
             user.value = { name: 'John Doe' }
-            useRouter().push(returnUrl.value as string ?? '/')
+            useRouter().push('/')
+        }
+
+        const logout = () => {
+            user.value = null;
+            useRouter().push('/login')
 
         }
         return {
+            logout,
             isAuthenticated,
             returnUrl,
             login

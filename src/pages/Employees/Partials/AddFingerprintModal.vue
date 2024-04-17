@@ -86,6 +86,16 @@
                                         Place your finger on the fingerprint
                                         scanner of the selected device to scan
                                         your fingerprint.
+                                        <span
+                                            class="inline-flex items-center gap-x-1.5 rounded-full bg-blue-200 px-2 py-1 text-xs font-medium text-blue-700 mt-1 capitalize"
+                                        >
+                                            <Spinner
+                                                class="animate-spin w-5 text-red-500"
+                                                v-if="true"
+                                            />
+
+                                            {{ status?.status }}
+                                        </span>
                                     </p>
                                 </div>
 
@@ -126,7 +136,6 @@
                                 Select Device
                             </button>
                             <button
-                                @click="scanFingerprint"
                                 v-if="step == 2"
                                 class="w-full px-4 py-2 mt-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md sm:mt-0 sm:w-1/2 sm:mx-2 hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                             >
@@ -144,9 +153,12 @@
 import { instance } from "@/api/instance";
 //@ts-ignore
 import Fingerprint from "@/assets/fingerprint.svg?component";
+
+//@ts-ignore
+import Spinner from "@/assets/spinner.svg?component";
 import DeviceCard from "@/pages/Devices/Partials/DeviceCard.vue";
 import { FingerPrintIcon } from "@heroicons/vue/24/outline";
-import { useVModel } from "@vueuse/core";
+import { useVModel, useTimeoutPoll } from "@vueuse/core";
 import { useAxios } from "@vueuse/integrations/useAxios";
 import { ref } from "vue";
 interface Props {
@@ -171,8 +183,27 @@ const { execute } = useAxios(
     "/fingerprints/enroll",
     { method: "POST" },
     instance,
+    { immediate: false },
 );
+
+const { execute: updateStatus, data: status } = useAxios<App.Models.Device>(
+    "/sync",
+    { method: "GET" },
+    instance,
+    { immediate: false },
+);
+
 const step = ref(0);
+
+const { pause, resume } = useTimeoutPoll(
+    () => {
+        updateStatus();
+    },
+    1000,
+    {
+        immediate: false,
+    },
+);
 
 const requestScan = () => {
     if (!selectedDevice.value) return;
@@ -184,9 +215,11 @@ const requestScan = () => {
     })
         .then(() => {
             step.value = 1;
+            resume();
         })
         .catch((e) => {
             alert(e);
+            pause();
         });
 };
 </script>

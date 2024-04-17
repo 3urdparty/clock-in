@@ -1,7 +1,14 @@
 <template>
     <div>
         <TransitionRoot as="template" :show="open">
-            <Dialog as="div" class="relative z-10" @close="open = false">
+            <Dialog
+                as="div"
+                class="relative z-10"
+                @close="
+                    //@ts-ignore
+                    open = false
+                "
+            >
                 <TransitionChild
                     as="template"
                     enter="ease-out duration-300"
@@ -254,6 +261,7 @@
                                         type="button"
                                         class="text-sm font-semibold leading-6 text-gray-900"
                                         @click="
+                                            //@ts-ignore
                                             open = false;
                                             emits('reset');
                                         "
@@ -287,7 +295,6 @@
 
 <script setup lang="ts" generic="T extends Form">
 export interface Form {}
-import { UserCircleIcon } from "@heroicons/vue/24/solid";
 // @ts-ignore
 import Spinner from "@/assets/spinner.svg?component";
 import {

@@ -18,6 +18,7 @@ import SettingsView from '@/pages/Settings.vue'
 import ShiftsIndexView from '@/pages/Shifts/Index.vue'
 import { RectangleGroupIcon } from '@heroicons/vue/24/outline'
 import { useAuthStore } from './stores/auth'
+import ShiftDetailView from '@/pages/Shifts/Show.vue'
 const routes = [
     { path: '/login', component: LoginView },
     { path: '/', component: HomeView, name: 'Dashboard' },
@@ -26,7 +27,9 @@ const routes = [
     { path: '/settings', component: SettingsView, name: 'Settings' },
     { path: '/devices/:id', component: DeviceView, name: 'Device Detail', props: true },
     { path: '/employees/:id', component: EmployeeView, name: 'Employee', props: true },
-    { path: '/shifts', component: ShiftsIndexView, name: 'Shifts', props: true }
+    { path: '/shifts', component: ShiftsIndexView, name: 'Shifts', props: true },
+    { path: '/shifts/:id', component: ShiftDetailView, name: 'Shift Detail', props: true }
+
 ]
 
 const router = createRouter({

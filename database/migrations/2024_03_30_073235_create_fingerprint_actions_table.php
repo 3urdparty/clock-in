@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('employee_id')->nullable();
 
             $table->string('action');
+            $table->string('status')->default('pending');
+            $table->integer('completion')->default(0);
         });
     }
 

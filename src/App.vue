@@ -1,6 +1,6 @@
 <template>
     <Dashboard v-if="currentRoute.fullPath != '/login'">
-        <main class="dark:bg-slate-950 p-8 pt-8 w-full">
+        <main class="dark:bg-slate-950 p-8 pt-1 w-full">
             <RouterView />
         </main>
     </Dashboard>

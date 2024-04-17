@@ -1,5 +1,5 @@
 <template>
-    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 pt-6">
         <DeviceCard
             :modelValue="device"
             v-for="device in devices ?? []"

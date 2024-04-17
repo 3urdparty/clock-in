@@ -239,66 +239,20 @@
                         class="-mr-px hidden grid-cols-7 divide-x divide-gray-100 border-r border-gray-100 text-sm leading-6 text-gray-500 sm:grid"
                     >
                         <div class="col-end-1 w-14" />
-                        <div class="flex items-center justify-center py-3">
-                            <span
-                                >Mon
+                        <div
+                            class="flex items-center justify-center py-3"
+                            v-for="date in dates"
+                        >
+                            <span>
+                                {{ date.weekDay }}
                                 <span
                                     class="items-center justify-center font-semibold text-gray-900"
-                                    >10</span
-                                ></span
-                            >
-                        </div>
-                        <div class="flex items-center justify-center py-3">
-                            <span
-                                >Tue
-                                <span
-                                    class="items-center justify-center font-semibold text-gray-900"
-                                    >11</span
-                                ></span
-                            >
-                        </div>
-                        <div class="flex items-center justify-center py-3">
-                            <span class="flex items-baseline"
-                                >Wed
-                                <span
-                                    class="ml-1.5 flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 font-semibold text-white"
-                                    >12</span
-                                ></span
-                            >
-                        </div>
-                        <div class="flex items-center justify-center py-3">
-                            <span
-                                >Thu
-                                <span
-                                    class="items-center justify-center font-semibold text-gray-900"
-                                    >13</span
-                                ></span
-                            >
-                        </div>
-                        <div class="flex items-center justify-center py-3">
-                            <span
-                                >Fri
-                                <span
-                                    class="items-center justify-center font-semibold text-gray-900"
-                                    >14</span
-                                ></span
-                            >
-                        </div>
-                        <div class="flex items-center justify-center py-3">
-                            <span
-                                >Sat
-                                <span
-                                    class="items-center justify-center font-semibold text-gray-900"
-                                    >15</span
-                                ></span
-                            >
-                        </div>
-                        <div class="flex items-center justify-center py-3">
-                            <span
-                                >Sun
-                                <span
-                                    class="items-center justify-center font-semibold text-gray-900"
-                                    >16</span
+                                    :class="[
+                                        selectedDate == date
+                                            ? 'ml-1.5 flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 font-semibold text-white'
+                                            : 'items-center justify-center font-semibold text-gray-900',
+                                    ]"
+                                    >{{ date.date }}</span
                                 ></span
                             >
                         </div>
@@ -541,21 +495,21 @@
                                 v-for="shift in data"
                                 class="relative mt-px flex"
                                 :style="{
-                                    gridRow: `${((6 * Math.floor((shift.start as number) * 6)) / 6) * 2 + 2} / span ${(6 * Math.floor(shift.duration ?? 1 * 6)) / 6}`,
-                                    gridColumnStart: `${shift.week_day ?? 0 + 1}`,
+                                    gridRow: `${calculateSegment(shift.start) + 2} / span ${calculateSegment(shift.duration)}`,
+                                    gridColumnStart: `${shift.week_day}`,
                                 }"
                             >
                                 <a
                                     href="#"
-                                    class="group absolute inset-1 flex flex-col overflow-y-auto rounded-lg bg-pink-50 p-2 text-xs leading-5 hover:bg-pink-100"
+                                    class="group absolute inset-1 flex flex-col overflow-y-auto rounded-lg bg-blue-50 p-2 text-xs leading-5 hover:bg-blue-100"
                                 >
                                     <p
-                                        class="order-1 font-semibold text-pink-700"
+                                        class="order-1 font-semibold text-blue-700"
                                     >
                                         Shift
                                     </p>
                                     <p
-                                        class="order-2 font-normal text-pink-500 group-hover:text-pink-700 flex gap-1 items-center"
+                                        class="order-2 font-normal text-blue-500 group-hover:text-blue-700 flex gap-1 items-center"
                                     >
                                         <img
                                             :src="shift.employee?.image_url"
@@ -565,7 +519,7 @@
                                         {{ shift.employee?.user?.name }}
                                     </p>
                                     <p
-                                        class="text-pink-500 group-hover:text-pink-700 flex items-center justify-between"
+                                        class="text-blue-500 group-hover:text-blue-700 flex items-center justify-between"
                                     >
                                         <time datetime="2022-01-12T07:30">
                                             {{
@@ -585,7 +539,7 @@
                                         >
                                         <time
                                             datetime="2022-01-12T07:30 "
-                                            class="text-pink-500/0 group-hover:text-pink-500 transition text-2xs"
+                                            class="text-blue-500/0 group-hover:text-blue-500 transition text-2xs"
                                         >
                                             {{
                                                 Math.floor(
@@ -601,28 +555,6 @@
                                                 )
                                             }}m
                                         </time>
-                                    </p>
-                                </a>
-                            </li>
-                            <li
-                                class="relative mt-px hidden sm:col-start-6 sm:flex"
-                                style="grid-row: 122 / span 24"
-                            >
-                                <a
-                                    href="#"
-                                    class="group absolute inset-1 flex flex-col overflow-y-auto rounded-lg bg-gray-100 p-2 text-xs leading-5 hover:bg-gray-200"
-                                >
-                                    <p
-                                        class="order-1 font-semibold text-gray-700"
-                                    >
-                                        Meeting with design team at Disney
-                                    </p>
-                                    <p
-                                        class="text-gray-500 group-hover:text-gray-700"
-                                    >
-                                        <time datetime="2022-01-15T10:00"
-                                            >10:00 AM</time
-                                        >
                                     </p>
                                 </a>
                             </li>
@@ -664,4 +596,48 @@ onMounted(() => {
                 currentMinute) /
             1440;
 });
+const roundUpToNearestSixth = (value: number) => Math.floor(value * 6) / 6;
+
+const calculateSegment = (value: number) => {
+    const hours = Math.floor(value);
+    const minutes = value - Math.floor(value);
+
+    const hour_segments = hours * 12;
+    const minutes_segments = roundUpToNearestSixth(minutes) * 12;
+    return minutes_segments + hour_segments;
+};
+
+const dates = [
+    {
+        weekDay: "M",
+        date: 10,
+    },
+    {
+        weekDay: "T",
+        date: 11,
+    },
+    {
+        weekDay: "W",
+        date: 12,
+    },
+    {
+        weekDay: "T",
+        date: 13,
+    },
+    {
+        weekDay: "F",
+        date: 14,
+    },
+
+    {
+        weekDay: "S",
+        date: 15,
+    },
+
+    {
+        weekDay: "S",
+        date: 16,
+    },
+];
+const selectedDate = ref(dates[2]);
 </script>

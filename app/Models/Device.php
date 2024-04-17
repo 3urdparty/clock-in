@@ -51,7 +51,7 @@ class Device extends Model
     public function status(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->updated_at && now()->diffInMinutes($this->updated_at) < -1 ?   "offline" : "online"
+            get: fn () => $this->updated_at && now()->diffInMinutes($this->updated_at) < -1 ?   "online" : "online"
         );
     }
 }

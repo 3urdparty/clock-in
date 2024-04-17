@@ -122,30 +122,6 @@
                                     )"
                                 >
                                     <td
-                                        class="pl-6 py-4 text-sm whitespace-nowrap"
-                                    >
-                                        <div class="flex items-center">
-                                            <span class="relative inline-block">
-                                                <img
-                                                    class="h-8 w-8 rounded-full"
-                                                    :src="employee.image_url"
-                                                    alt=""
-                                                />
-                                                <span
-                                                    class="absolute bottom-0 right-0 block h-1.5 w-1.5 rounded-full bg-gray-300 ring-2 ring-white"
-                                                    :class="{
-                                                        'bg-green-500':
-                                                            employee.status ===
-                                                            'online',
-                                                        'bg-gray-300':
-                                                            employee.status ===
-                                                            'offline',
-                                                    }"
-                                                />
-                                            </span>
-                                        </div>
-                                    </td>
-                                    <td
                                         class="px-4 py-4 text-sm font-medium whitespace-nowrap"
                                     >
                                         <RouterLink
@@ -166,7 +142,12 @@
                                     <td
                                         class="px-12 py-4 text-sm font-medium whitespace-nowrap text-black"
                                     >
-                                        <StatusTag :status="employee.status" />
+                                        <StatusTag
+                                            :status="
+                                                (employee.status as 'online') ||
+                                                'offline'
+                                            "
+                                        />
                                     </td>
                                     <td
                                         class="px-4 py-4 text-sm whitespace-nowrap"
@@ -351,12 +332,18 @@
 <script setup lang="ts">
 import ShiftProgressBar from "@/components/ShiftProgressBar.vue";
 import StatusTag from "@/components/StatusTag.vue";
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
+import {
+    EllipsisVerticalIcon,
+    PencilSquareIcon,
+    TrashIcon,
+} from "@heroicons/vue/20/solid";
 import { ClockIcon } from "@heroicons/vue/24/outline";
 interface Props {
     data: App.Models.Employee[];
 }
 const props = withDefaults(defineProps<Props>(), {
-    data: [],
+    data: () => [] as App.Models.Employee[],
 });
 
 import { useOffsetPagination } from "@vueuse/core";
@@ -369,16 +356,4 @@ const { currentPage, pageCount, next, prev } = useOffsetPagination({
     page: 1,
     pageSize: pageSize,
 });
-import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
-import {
-    ArchiveBoxIcon,
-    ArrowRightCircleIcon,
-    ChevronDownIcon,
-    DocumentDuplicateIcon,
-    EllipsisVerticalIcon,
-    HeartIcon,
-    PencilSquareIcon,
-    TrashIcon,
-    UserPlusIcon,
-} from "@heroicons/vue/20/solid";
 </script>

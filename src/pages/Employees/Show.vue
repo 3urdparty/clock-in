@@ -1,13 +1,13 @@
 <template>
-    <div class="text-white">
+    <div class="text-white mt-4">
         <AddFingerprintModal
-            :employeeId="employee.id"
+            :employeeId="id"
             :isOpen="isOpen"
             @update:isOpen="(newIsOpen) => (isOpen = newIsOpen)"
         />
         <div :class="{ 'opacity-50': isOpen }">
             <div class="flex gap-4">
-                <EmployeeCard :employee="employee" />
+                <EmployeeCard :employee="employee as App.Models.Employee" />
                 <div class="space-y-4 w-full">
                     <div
                         class="sm:flex sm:items-center sm:justify-between px-1"
@@ -35,7 +35,12 @@
                             </button>
                         </div>
                     </div>
-                    <FingerprintTable :data="employee.fingerprints" />
+                    <FingerprintTable
+                        v-if="employee"
+                        :data="
+                            employee.fingerprints as App.Models.Fingerprint[]
+                        "
+                    />
 
                     <ShiftTable :data="employee?.shifts" />
                 </div>
@@ -45,21 +50,24 @@
 </template>
 <script setup lang="ts">
 import { instance } from "@/api/instance";
-import { ClockIcon, FingerPrintIcon } from "@heroicons/vue/24/outline";
+import { FingerPrintIcon } from "@heroicons/vue/24/outline";
 import FingerprintTable from "./Partials/FingerprintTable.vue";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import AddFingerprintModal from "./Partials/AddFingerprintModal.vue";
 import ShiftTable from "./Partials/ShiftTable.vue";
 import EmployeeCard from "./Partials/EmployeeCard.vue";
 import { useAxios } from "@vueuse/integrations/useAxios";
 interface Props {
-    id: string;
+    id: number;
 }
 const props = defineProps<Props>();
-const { data: employee } = useAxios<App.Models.Employee>(
+const { data: employee, execute } = useAxios<App.Models.Employee>(
     `/employees/${props.id}`,
     { method: "GET" },
     instance,
 );
+onMounted(() => {
+    execute();
+});
 const isOpen = ref(false);
 </script>
