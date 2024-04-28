@@ -44,7 +44,7 @@ export const useAxiosForm = (data: { [key: string]: any }, options: AxiosRequest
     const reset = () => {
         Object.assign(errors, {})
     }
-    return { form, submit, reset, hasErrors }
+    return { form, submit, reset, hasErrors, values }
 }
 
 // usage : const {form} = useAxiosForm(url, {options}, data)

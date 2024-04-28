@@ -53,20 +53,22 @@ uint8_t id;
 
 // Setup
 void setup() {
+
+  if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
+    log("SSD1306 allocation failed");
+    for(;;);
+  } else {
+    log("SSD1306 allocation success");
+  }
+
     WiFi.mode(WIFI_AP_STA);
     WiFi.softAP(soft_ap_ssid, soft_ap_password);
     Serial.begin(115200);
 
-  // Setup OLED screen
-  if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
-    log("SSD1306 allocation failed");
-    for(;;);
-  }
-  //
-  display.display();
+ display.display();
   delay(2000); // Pause for 2 seconds
   display.clearDisplay();
-  //
+
 
   // Connecting time client
   timeClient.begin();
@@ -90,7 +92,10 @@ void setup() {
   }
   //
   finger.getTemplateCount();
+
   log("Fingerprint templates: " + String(finger.templateCount));
+
+
 }
 
 // Loop
@@ -587,4 +592,3 @@ void confirmAdding(int id){
 
   http.end();  //Close connection
 };
-

@@ -495,7 +495,7 @@
                                 v-for="shift in data"
                                 class="relative mt-px flex"
                                 :style="{
-                                    gridRow: `${calculateSegment(shift.start) + 2} / span ${calculateSegment(shift.duration)}`,
+                                    gridRow: `${calculateSegment(shift.start as number) + 2} / span ${calculateSegment(shift.duration as number)}`,
                                     gridColumnStart: `${shift.week_day}`,
                                 }"
                             >

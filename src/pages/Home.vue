@@ -18,7 +18,7 @@ import EmployeesCard from "@/pages/Partials/EmployeesCard.vue";
 import { useAxios } from "@vueuse/integrations/useAxios";
 import { instance } from "@/api/instance";
 import Skeleton from "@/components/Skeleton.vue";
-const { data: employees } = useAxios<App.Models.Employee[]>(
+const { data: employees } = useAxios<App.Paginate<App.Models.Employee>>(
     "/employees",
     { method: "GET" },
     instance,

@@ -1,6 +1,6 @@
 <template>
     <section class="container mx-auto text-black">
-        <div class="flex flex-col h-[65vh]">
+        <div class="flex flex-col h-[62vh]">
             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div
                     class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8"
@@ -117,10 +117,35 @@
                             >
                                 <tr
                                     v-for="employee in data.slice(
-                                        (currentPage - 1) * pageSize,
-                                        currentPage * pageSize,
+                                        (pagination.currentPage.value - 1) * 6,
+                                        pagination.currentPage.value * 6,
                                     )"
                                 >
+                                    <td
+                                        class="pl-6 py-4 text-sm whitespace-nowrap"
+                                    >
+                                        <div class="flex items-center">
+                                            <span class="relative inline-block">
+                                                <img
+                                                    class="h-8 w-8 rounded-full"
+                                                    :src="employee.image_url"
+                                                    alt=""
+                                                />
+                                                <span
+                                                    class="absolute bottom-0 right-0 block h-1.5 w-1.5 rounded-full bg-gray-300 ring-2 ring-white"
+                                                    :class="{
+                                                        'bg-green-500':
+                                                            employee.status ===
+                                                            'online',
+                                                        'bg-gray-300':
+                                                            employee.status ===
+                                                            'offline',
+                                                    }"
+                                                />
+                                            </span>
+                                        </div>
+                                    </td>
+
                                     <td
                                         class="px-4 py-4 text-sm font-medium whitespace-nowrap"
                                     >
@@ -220,42 +245,54 @@
                                                         <MenuItem
                                                             v-slot="{ active }"
                                                         >
-                                                            <a
-                                                                href="#"
+                                                            <button
+                                                                @click="
+                                                                    $emit(
+                                                                        'edit',
+                                                                        employee,
+                                                                    )
+                                                                "
                                                                 :class="[
                                                                     active
                                                                         ? 'bg-gray-100 text-gray-900'
                                                                         : 'text-gray-700',
                                                                     'group flex items-center px-4 py-2 text-sm',
                                                                 ]"
+                                                                class="w-full"
                                                             >
                                                                 <PencilSquareIcon
                                                                     class="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500"
                                                                     aria-hidden="true"
                                                                 />
                                                                 Edit
-                                                            </a>
+                                                            </button>
                                                         </MenuItem>
                                                     </div>
                                                     <div class="py-1">
                                                         <MenuItem
                                                             v-slot="{ active }"
                                                         >
-                                                            <a
-                                                                href="#"
+                                                            <button
+                                                                @click="
+                                                                    $emit(
+                                                                        'delete',
+                                                                        employee,
+                                                                    )
+                                                                "
                                                                 :class="[
                                                                     active
                                                                         ? 'bg-gray-100 text-red-900'
                                                                         : 'text-red-700',
                                                                     'group flex items-center px-4 py-2 text-sm ',
                                                                 ]"
+                                                                class="w-full"
                                                             >
                                                                 <TrashIcon
                                                                     class="mr-3 h-5 w-5 text-red-400 group-hover:text-red-500"
                                                                     aria-hidden="true"
                                                                 />
                                                                 Delete
-                                                            </a>
+                                                            </button>
                                                         </MenuItem>
                                                     </div>
                                                 </MenuItems>
@@ -272,7 +309,7 @@
 
         <div class="flex items-center justify-between mt-6">
             <button
-                @click="prev"
+                @click="pagination.prev"
                 class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800"
             >
                 <svg
@@ -295,18 +332,20 @@
 
             <div class="items-center hidden md:flex gap-x-3">
                 <button
-                    @click="currentPage = num"
-                    v-for="num in pageCount"
-                    href="#"
+                    @click="pagination.currentPage.value = num as number"
+                    v-for="num in pagination.pageCount.value"
                     class="px-2 py-1 text-sm text-blue-500 rounded-md"
-                    :class="{ 'bg-blue-500 text-white': num === currentPage }"
+                    :class="{
+                        'bg-blue-500 text-white':
+                            num === pagination.currentPage.value,
+                    }"
                 >
                     {{ num }}
                 </button>
             </div>
 
             <button
-                @click="next"
+                @click="pagination.next"
                 class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800"
             >
                 <span> Next </span>
@@ -347,13 +386,17 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 import { useOffsetPagination } from "@vueuse/core";
+import { reactive, ref } from "vue";
 import { RouterLink } from "vue-router";
 
-const pageSize = 7;
-
-const { currentPage, pageCount, next, prev } = useOffsetPagination({
+const pagination = useOffsetPagination({
     total: props.data.length,
-    page: 1,
-    pageSize: pageSize,
+    pageSize: 6,
 });
+
+interface Emits {
+    (e: "edit", employee: App.Models.Employee): void;
+    (e: "delete", employee: App.Models.Employee): void;
+}
+const emits = defineEmits<Emits>();
 </script>

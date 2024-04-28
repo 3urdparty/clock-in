@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Device::factory(1)->create();
-        User::factory(4)->create()->each(function (User $user) {
+        User::factory(20)->create()->each(function (User $user) {
             $user->employee()->save(Employee::factory()->make());
             $user->employee->shifts()->saveMany(Shift::factory(2)->make()->each(function (Shift $shift) {
                 $shift->device()->associate(Device::first());

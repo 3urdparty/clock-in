@@ -19,7 +19,7 @@ return new class extends Migration
             $table->float('start');
             $table->float('end')->nullable();
 
-            $table->foreignIdFor(\App\Models\Employee::class)->constrained();
+            $table->foreignIdFor(\App\Models\Employee::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(\App\Models\Device::class)->constrained();
         });
     }
