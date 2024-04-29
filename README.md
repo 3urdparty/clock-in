@@ -22,7 +22,20 @@ Insert gif or link to demo
 
 
 ## Screenshots
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+Login:
+![App Screenshot](/screenshots/login.png)
+Login:
+![App Screenshot](/screenshots/home.png)
+Login:
+![App Screenshot](/screenshots/bar_chart.png)
+Login:
+![App Screenshot](/screenshots/line_chart.png)
+Login:
+![App Screenshot](/screenshots/employees.png)
+Login:
+![App Screenshot](/screenshots/employee_show.png)
+Login:
+![App Screenshot](/screenshots/add_fingerprint.png)
 
 
 ## Acknowledgements
