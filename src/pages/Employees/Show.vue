@@ -90,9 +90,9 @@ const deleteFingerprint = (fingerprint_id: number) => {
         },
     }).then(() => execute());
 };
-import { useInterval, useIntervalFn, useTimeoutFn } from "@vueuse/core";
+import { useIntervalFn } from "@vueuse/core";
 
-const { isPending, start, stop } = useIntervalFn(
+useIntervalFn(
     () => {
         execute();
     },

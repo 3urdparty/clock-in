@@ -29,7 +29,12 @@
                         <h5
                             class="leading-none text-2xl font-bold text-gray-900 dark:text-white pb-1"
                         >
-                            {{ data?.last_7_days?.total.toFixed(1) ?? "-" }} hrs
+                            {{
+                                data?.last_7_days?.total
+                                    ? data?.last_7_days?.total.toFixed(1)
+                                    : "-"
+                            }}
+                            hrs
                         </h5>
                         <p
                             class="text-sm font-normal text-gray-500 dark:text-gray-400"
@@ -206,6 +211,7 @@
 import ApexCharts from "apexcharts";
 import { onMounted, ref } from "vue";
 import Card from "@/components/Card.vue";
+import { useTimeoutFn } from "@vueuse/core";
 
 interface Props {
     data: App.Models.BarChart;
@@ -337,7 +343,9 @@ onMounted(() => {
             document.getElementById("column-chart"),
             options,
         );
-        chart.render();
+        setTimeout(() => {
+            chart.render();
+        }, 200);
     }
 });
 const timeframe = ref("Last 7 days");

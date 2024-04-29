@@ -22,6 +22,7 @@
                                         v-if="shift"
                                         :start="shift.start as number"
                                         :ongoing="!shift.end"
+                                        :duration="shift?.duration as number"
                                         :end="shift.end as number"
                                         class="mt-1"
                                     />

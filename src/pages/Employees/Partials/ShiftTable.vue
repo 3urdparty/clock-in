@@ -68,7 +68,9 @@
                                 class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
                             >
                                 {{
-                                    shift.end ? shift.duration.toFixed(0) : "-"
+                                    shift.end
+                                        ? (shift?.duration as number).toFixed(0)
+                                        : "-"
                                 }}m
                             </td>
                             <td

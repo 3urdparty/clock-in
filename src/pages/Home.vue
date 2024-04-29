@@ -1,10 +1,11 @@
 <template>
     <div>
         <div class="grid grid-cols-3 gap-4 px-0.5">
+            {{ statistics?.barchart.last_7_days.total }}
             <StatSection class="col-span-3" :data="statistics?.stats" />
             <Barchart :data="statistics?.barchart" />
 
-            <LineChart />
+            <LineChart :hours="statistics?.barchart.last_7_days.total" />
 
             <EmployeesCard :data="employees ?? []" />
         </div>
@@ -17,8 +18,7 @@ import Barchart from "@/components/Barchart.vue";
 import EmployeesCard from "@/pages/Partials/EmployeesCard.vue";
 import { useAxios } from "@vueuse/integrations/useAxios";
 import { instance } from "@/api/instance";
-import Skeleton from "@/components/Skeleton.vue";
-const { data: employees } = useAxios<App.Paginate<App.Models.Employee>>(
+const { data: employees } = useAxios<App.Models.Employee[]>(
     "/employees",
     { method: "GET" },
     instance,
@@ -28,11 +28,9 @@ interface Statistics {
     barchart: App.Models.BarChart;
     stats: App.Models.Statistic[];
 }
-const {
-    data: statistics,
-    execute,
-    isLoading,
-    isFinished,
-    error,
-} = useAxios<Statistics>("/statistics", { method: "GET" }, instance);
+const { data: statistics } = useAxios<Statistics>(
+    "/statistics",
+    { method: "GET" },
+    instance,
+);
 </script>

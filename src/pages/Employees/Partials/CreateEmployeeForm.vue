@@ -265,8 +265,7 @@
                                         class="text-sm font-semibold leading-6 text-gray-900"
                                         @click="
                                             //@ts-ignore
-                                            open = false;
-                                            emits('reset');
+                                            open = false
                                         "
                                     >
                                         Cancel
