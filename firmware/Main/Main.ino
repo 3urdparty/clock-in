@@ -530,6 +530,14 @@ uint8_t enrollFingerprint(int id) {
     display.clearDisplay();
     display.drawBitmap( 34, 0, FinPr_valid_bits, FinPr_valid_width, FinPr_valid_height, WHITE);
     display.display();
+
+    WiFiClient client;
+    HTTPClient http;    //Declare object of class HTTPClient
+    String link = host + "/sync";
+    http.begin(client,link); //initiate HTTP request, put your Website URL or Your Computer IP
+    http.addHeader("Content-Type", "application/x-www-form-urlencoded");    //Specify content-type header
+    int httpCode = http.DELETE();   //Send the request
+
   } else if (p == FINGERPRINT_PACKETRECIEVEERR) {
     Serial.println("Communication error");
     return p;

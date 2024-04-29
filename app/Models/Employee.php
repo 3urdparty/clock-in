@@ -55,7 +55,7 @@ class Employee extends Model
 
     public function completeCurrentShift()
     {
-        $this->recentShift()->update(['end' => now()->hour]);
+        $this->recentShift()->update(['end' => now()->hour + now()->minute / 60]);
     }
 
     public function startNewShift()

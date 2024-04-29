@@ -6,7 +6,7 @@ import { computed, reactive } from "vue"
 export interface Errors {
     [key: string]: string[]
 }
-// export interface Form<T> extends ReturnType<typeof useAxios> { }
+
 export const useAxiosForm = (data: { [key: string]: any }, options: AxiosRequestConfig, transform?: (data: { [key: string]: any }) => {}) => {
     const values = reactive({ ...data });
     const errors = reactive<Errors>({});
@@ -42,7 +42,9 @@ export const useAxiosForm = (data: { [key: string]: any }, options: AxiosRequest
     };
 
     const reset = () => {
-        Object.assign(errors, {})
+        Object.assign(form.value.errors, {})
+        // Object.assign(form.value.values, {})
+        // Object.assign(values, data)
     }
     return { form, submit, reset, hasErrors, values }
 }

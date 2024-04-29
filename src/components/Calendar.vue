@@ -495,13 +495,13 @@
                                 v-for="shift in data"
                                 class="relative mt-px flex"
                                 :style="{
-                                    gridRow: `${calculateSegment(shift.start as number) + 2} / span ${calculateSegment(shift.duration as number)}`,
+                                    gridRow: `${calculateSegment(shift.start as number) + 2} / span ${calculateSegment(shift.duration as number) + 2}`,
                                     gridColumnStart: `${shift.week_day}`,
                                 }"
                             >
                                 <a
                                     href="#"
-                                    class="group absolute inset-1 flex flex-col overflow-y-auto rounded-lg bg-blue-50 p-2 text-xs leading-5 hover:bg-blue-100"
+                                    class="group absolute inset-1 flex flex-col overflow-y-auto rounded-lg bg-blue-500/20 p-2 text-xs leading-5 hover:bg-blue-500/30"
                                 >
                                     <p
                                         class="order-1 font-semibold text-blue-700"
@@ -523,16 +523,8 @@
                                     >
                                         <time datetime="2022-01-12T07:30">
                                             {{
-                                                Math.floor(
-                                                    shift.start as number,
-                                                )
-                                            }}:{{
-                                                Math.floor(
-                                                    ((shift.start as number) -
-                                                        Math.floor(
-                                                            shift.start as number,
-                                                        )) *
-                                                        60,
+                                                formatTime(
+                                                    shift?.start as number,
                                                 )
                                             }}
                                             AM</time
@@ -640,4 +632,5 @@ const dates = [
     },
 ];
 const selectedDate = ref(dates[2]);
+import { formatTime } from "@/utils/formatTime";
 </script>

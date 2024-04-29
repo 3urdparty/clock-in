@@ -66,7 +66,9 @@
                             <td
                                 class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
                             >
-                                {{ shift.duration?.toFixed(0) ?? 0 * 60 }}m
+                                {{
+                                    shift.end ? shift.duration.toFixed(0) : "-"
+                                }}m
                             </td>
                             <td
                                 class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"

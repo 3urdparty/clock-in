@@ -30,6 +30,7 @@ interface Statistics {
 }
 const {
     data: statistics,
+    execute,
     isLoading,
     isFinished,
     error,

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\User;
 use App\Http\Requests\StoreEmployeeRequest;
+use Database\Factories\EmployeeFactory;
 
 class EmployeeController extends Controller
 {
@@ -18,21 +19,22 @@ class EmployeeController extends Controller
         $employees = Employee::with(['user'])->get()->append(['status']);
 
         return response()->json($employees);
-        // return response()->json([]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreEmployeeRequest $request)
+    public function store(Request $request)
     {
-        $values = $request->validated();
+        $values = $request->input('values');
 
+        $values['password'] = bcrypt($values['password']);
+        $values['image_url'] =   fake()->randomElement(EmployeeFactory::faces);
         $user = User::create($values);
         $employee = Employee::make($values);
         $employee->user()->associate($user);
         $employee->save();
-        return response()->json($employee);
+        return response()->json($user);
     }
 
     /**
@@ -48,9 +50,22 @@ class EmployeeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Employee $employee)
     {
-        //
+
+        $values = $request->input('values');
+        data_forget($values, 'id');
+        data_forget($values, 'user');
+        data_forget($values, 'created_at');
+        data_forget($values, 'recent_shift');
+        data_forget($values, 'updated_at');
+        data_forget($values, 'user_id');
+        data_forget($values, 'status');
+
+        $employee->update($values);
+        $employee->user->update($values);
+
+        return response()->json($values);
     }
 
     /**
@@ -59,7 +74,7 @@ class EmployeeController extends Controller
     public function destroy(Employee $employee)
     {
 
-        $employee->delete();
+        $employee->user->delete();
         return response()->json([]);
     }
 }

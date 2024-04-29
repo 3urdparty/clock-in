@@ -11,7 +11,7 @@ Content-Type: application/json
 
 GET http://192.168.253.251:8000/api/sync
 
-POST http://127.0.0.1:8000/api/fingerprints/enroll
+POST http://192.168.4.2:8000/api/fingerprints/enroll
 Content-Type: application/json
 
 {
@@ -51,5 +51,19 @@ Content-Type: application/json
 }
 
 
-DELETE http://127.0.0.1:8000/api/employees/1
+DELETE http://127.0.0.1:8000/api/employees/3
 Content-Type: application/json
+
+PUT http://127.0.0.1:8000/api/employees/16
+Content-Type: application/json
+{
+    "name": "John Do"
+
+}
+POST http://127.0.0.1:8000/api/employees
+Content-Type: application/json
+
+{
+    "name": "John Doe",
+    "email": "test123@gmail.com"
+}

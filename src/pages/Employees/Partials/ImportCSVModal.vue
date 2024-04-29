@@ -127,6 +127,7 @@ import {
     TransitionChild,
     TransitionRoot,
 } from "@headlessui/vue";
+import { PaperClipIcon } from "@heroicons/vue/20/solid";
 import { useVModels } from "@vueuse/core";
 
 interface Props {

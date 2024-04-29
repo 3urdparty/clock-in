@@ -47,17 +47,17 @@ Route::get('statistics', function () {
             ],
             [
                 "name" => "Total Hours",
-                "stat" => $shifts_in_last_7_days->sum('duration') . 'hrs',
+                "stat" => round($shifts_in_last_7_days->sum('duration'), 2) . 'hrs',
                 "previousStat" => $shifts_in_previous_7_days->sum('duration') . 'hrs',
                 "changeType" => $shifts_in_last_7_days->sum('duration') > $shifts_in_previous_7_days->sum('duration') ? "increase" : "decrease",
                 "change" => ($shifts_in_last_7_days->sum('duration') - $shifts_in_previous_7_days->sum('duration')) / ($shifts_in_previous_7_days->count() + 1) * 100,
             ],
             [
                 "name" => "Average Shift Duration",
-                "stat" => $shifts_in_last_7_days->average('duration') . 'hrs',
+                "stat" => round($shifts_in_last_7_days->average('duration'), 2) . 'hrs',
                 "previousStat" => $shifts_in_previous_7_days->average('duration') . 'hrs',
                 "changeType" => $shifts_in_last_7_days->average('duration') > $shifts_in_previous_7_days->average('duration') ? "increase" : "decrease",
-                "change" => ($shifts_in_last_7_days->average('duration') - $shifts_in_previous_7_days->average('duration')) / ($shifts_in_previous_7_days->average('duration') + 1) * 100,
+                "change" => round(($shifts_in_last_7_days->average('duration') - $shifts_in_previous_7_days->average('duration')) / ($shifts_in_previous_7_days->average('duration') + 1) * 100, 2),
             ],
         ],
         'barchart' => [
@@ -106,7 +106,6 @@ Route::post('/scan', function (Request $request) {
     if ($employee->status == 'online') {
         $employee->completeCurrentShift();
         return response()->json([
-
             "message" => "Clocked Out successfully at " . now()->hour . ":" . now()->minute,
             "time" => now()->hour . ":" . now()->minute,
             "duration" => now()->hour - $employee->recentShift->start,
@@ -116,14 +115,14 @@ Route::post('/scan', function (Request $request) {
         ]);
     } else {
         $newShift = Shift::create([
-            'start' => now()->hour,
+            'start' => now()->hour + now()->minute / 60,
             'date' => today()->toDateString(),
             'device_id' => 1,
             'employee_id' => $employee->id,
         ]);
 
         return response()->json([
-            "message" => "Clocked in successfully at " . now()->hour . ":" . now()->minute,
+            "message" => "Clocked in successfully at " . now()->hourOfDay() . ":" . now()->minute,
             "action" => "clock-in",
             "fingerprint_id" => $fingerprintId,
             "name" => $employee->user->name,
@@ -137,6 +136,12 @@ Route::get('sync', function () {
     return response()->json($action);
 });
 
+Route::delete('sync', function () {
+    $action = FingerprintAction::all()->first();
+    if ($action) {
+        $action->delete();
+    }
+});
 Route::get('queue', function () {
     $jobs = FingerprintAction::all();
     return response()->json($jobs);
@@ -172,17 +177,3 @@ Route::post('fingerprints/delete', function (Request $request) {
         "message" => "Request to delete fingerprint sent successfully",
     ]);
 });
-
-// Route::get('test', function () {
-//     /** @var \PhpMqtt\Client\Contracts\MqttClient $mqtt */
-//     $mqtt = MQTT::connection();
-//     // $mqtt->publish('some/topic', 'foo', 1);
-//     // $mqtt->publish('some/other/topic', 'bar', 2, true); // Retain the message
-//     // $mqtt->loop(true);
-//
-//     $mqtt->publish('device/test3', 'foo');
-//     return response()->json([
-//         "message" => "Test successful",
-//     ]);
-// });
-//

@@ -7,7 +7,7 @@
     >
         <img :src="modelValue.image_url" class="w-1/3 object-cover" />
 
-        <div class="w-2/3 p-4 md:p-4 flex flex-col justify-between">
+        <div class="w-2/3 p-4 pb-3 flex flex-col justify-between">
             <div>
                 <span class="flex items-center gap-2">
                     <h1 class="text-xl font-bold text-gray-800 dark:text-white">
@@ -22,31 +22,34 @@
             </div>
 
             <div class="flex justify-between item-center mt-8">
-                <div
-                    v-if="modelValue.status == 'online'"
-                    class="flex items-center gap-x-1.5"
-                >
+                <div class="flex items-center gap-2">
                     <div
-                        class="flex-none rounded-full p-1"
-                        :class="{
-                            'bg-emerald-500/20 animate-pulse ':
-                                modelValue.status == 'online',
-                            'bg-gray-200/20': modelValue.status != 'online',
-                        }"
+                        v-if="modelValue.status == 'online'"
+                        class="flex items-center gap-x-1.5"
                     >
-                        <div class="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                        <div
+                            class="flex-none rounded-full p-1"
+                            :class="{
+                                'bg-emerald-500/20 animate-pulse ':
+                                    modelValue.status == 'online',
+                                'bg-gray-200/20': modelValue.status != 'online',
+                            }"
+                        >
+                            <div
+                                class="h-1.5 w-1.5 rounded-full bg-emerald-500"
+                            />
+                        </div>
+                        <p class="text-xs leading-5 text-gray-500 capitalize">
+                            {{ modelValue.status }}
+                        </p>
                     </div>
-                    <p class="text-xs leading-5 text-gray-500 capitalize">
-                        {{ modelValue.status }}
-                    </p>
-                </div>
 
-                <div
-                    class="flex items-center gap-1"
-                    v-if="modelValue.status == 'online'"
-                >
-                    <WifiIcon :modelValue="modelValue.connection_strength" />
-                    <BatteryIcon :modelValue="modelValue.battery" />
+                    <div
+                        class="flex items-center gap-1"
+                        v-if="modelValue.status == 'online'"
+                    >
+                        <BatteryIcon :modelValue="modelValue.battery" />
+                    </div>
                 </div>
                 <RouterLink
                     v-if="navigateable"

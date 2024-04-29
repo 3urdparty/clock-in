@@ -37,7 +37,7 @@ class Shift extends Model
     }
     public function getDurationAttribute(): float
     {
-        return $this->end - $this->start;
+        return ($this->end ? $this->end : (now()->hour + now()->minute / 60)) - $this->start;
     }
     public function getDateAttribute($value)
     {

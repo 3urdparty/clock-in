@@ -1,5 +1,5 @@
 <template>
-    <section class="container mx-auto text-black">
+    <section class="container mx-auto text-black h-full:">
         <div class="flex flex-col h-[62vh]">
             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div
@@ -92,20 +92,19 @@
                                             <div
                                                 class="p-3 mx-auto text-blue-500 bg-blue-100 rounded-full dark:bg-gray-800"
                                             >
-                                                <ClockIcon
+                                                <UserIcon
                                                     class="w-6 h-6 text-blue-500"
                                                 />
                                             </div>
                                             <h1
                                                 class="mt-3 text-lg text-gray-800 dark:text-white"
                                             >
-                                                No Shifts found
+                                                No Employees found
                                             </h1>
                                             <p
                                                 class="mt-2 text-gray-500 dark:text-gray-400 text-center"
                                             >
-                                                This employee has not clocked-in
-                                                for any shifts yet
+                                                No Employees in the System Yet
                                             </p>
                                         </div>
                                     </td>
@@ -201,13 +200,17 @@
                                             :ongoing="
                                                 !employee?.recent_shift?.end
                                             "
+                                            :duration="
+                                                employee?.recent_shift
+                                                    ?.duration as number
+                                            "
                                             :start="
                                                 employee?.recent_shift
                                                     ?.start as number
                                             "
                                             :end="
-                                                employee?.recent_shift?.end ??
-                                                new Date().getHours()
+                                                employee?.recent_shift
+                                                    ?.end as number
                                             "
                                         />
                                     </td>
@@ -377,7 +380,7 @@ import {
     PencilSquareIcon,
     TrashIcon,
 } from "@heroicons/vue/20/solid";
-import { ClockIcon } from "@heroicons/vue/24/outline";
+import { ClockIcon, UserIcon } from "@heroicons/vue/24/outline";
 interface Props {
     data: App.Models.Employee[];
 }
