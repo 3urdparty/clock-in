@@ -1,7 +1,6 @@
 <template>
     <div>
         <div class="grid grid-cols-3 gap-4 px-0.5">
-            {{ statistics?.barchart.last_7_days.total }}
             <StatSection class="col-span-3" :data="statistics?.stats" />
             <Barchart :data="statistics?.barchart" />
 
