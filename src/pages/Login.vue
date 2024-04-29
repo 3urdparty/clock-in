@@ -108,7 +108,6 @@ const submit = () => {
             form.password === "Admin123+"
         ) {
             auth.login();
-            router.push("/");
         } else {
             alert("Invalid Credentials");
         }

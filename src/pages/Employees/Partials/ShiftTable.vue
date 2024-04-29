@@ -47,6 +47,7 @@
                             >
                                 <ShiftProgressBar
                                     class="w-60"
+                                    :duration="shift?.duration as number"
                                     :start="shift.start as number"
                                     :ongoing="!shift.end"
                                     :end="shift.end as number"

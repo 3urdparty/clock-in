@@ -36,6 +36,10 @@
                         </div>
                     </div>
                     <FingerprintTable
+                        @delete="
+                            (fingerprint) =>
+                                deleteFingerprint(fingerprint.id as number)
+                        "
                         v-if="employee"
                         :data="
                             employee.fingerprints as App.Models.Fingerprint[]
@@ -70,4 +74,30 @@ onMounted(() => {
     execute();
 });
 const isOpen = ref(false);
+
+const { execute: sendDeleteFingerprintRequest } = useAxios(
+    "",
+    {
+        method: "DELETE",
+    },
+    instance,
+    { immediate: false },
+);
+const deleteFingerprint = (fingerprint_id: number) => {
+    sendDeleteFingerprintRequest(`/fingerprints/delete`, {
+        data: {
+            fingerprint_id,
+        },
+    }).then(() => execute());
+};
+import { useInterval, useIntervalFn, useTimeoutFn } from "@vueuse/core";
+
+const { isPending, start, stop } = useIntervalFn(
+    () => {
+        execute();
+    },
+    1000,
+
+    { immediate: true },
+);
 </script>

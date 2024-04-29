@@ -14,13 +14,12 @@ export const useAuthStore = createGlobalState(
         const returnUrl = ref()
         const login = () => {
             user.value = { name: 'John Doe' }
-            useRouter().push('/')
+            useRouter().push('/employees')
         }
 
         const logout = () => {
             user.value = null;
             useRouter().push('/login')
-
         }
         return {
             logout,

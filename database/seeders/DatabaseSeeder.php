@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             $user->employee->shifts()->saveMany(Shift::factory(2)->make()->each(function (Shift $shift) {
                 $shift->device()->associate(Device::first());
             }));
+            $user->employee->fingerprints()->saveMany(Fingerprint::factory(2)->make(['device_id' => 1]));
         });
     }
 }
